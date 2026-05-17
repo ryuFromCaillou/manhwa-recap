@@ -36,7 +36,24 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Controls what is printed to stdout (files are still written).",
     )
     ps.add_argument("--use-ocr", action="store_true")
+    ps.add_argument(
+        "--context-window",
+        type=int,
+        default=3,
+        help="Number of previous panels to include during contextual panel interpretation.",
+    )
     ps.add_argument("--output-root", type=Path, default=Path("output"))
+    ps.add_argument(
+        "--raw-responses-dir",
+        type=Path,
+        default=None,
+        help="Directory to write raw model responses (one file per call)",
+    )
+    ps.add_argument(
+        "--stream-raw",
+        action="store_true",
+        help="Print raw model outputs to stdout as they are received",
+    )
 
     p_panel = sub.add_parser("panelize", help="Detect and crop panels from a chapter folder")
     p_panel.add_argument("input_dir", type=Path, help="Folder of ordered images (e.g. input/chapter_001)")
@@ -125,8 +142,14 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
     failed_panels: list[str] = []
     for m in manifests:
         try:
-            ps = summarize_panel(m, ocr_text=ocr_map.get(m.panel_id), model=args.model)
-            panel_summaries.append(ps)
+                ps = summarize_panel(
+                    m,
+                    ocr_text=ocr_map.get(m.panel_id),
+                    model=args.model,
+                    raw_output_dir=args.raw_responses_dir,
+                    print_raw=args.stream_raw,
+                )
+                panel_summaries.append(ps)
         except Exception as e:
             failed_panels.append(m.panel_id)
             print(f"Panel summarization failed for {m.panel_id}: {e}", file=sys.stderr)
@@ -145,6 +168,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
             panel_summaries=panel_summaries,
             cast_context=cast_context,
             model=args.model,
+            context_window=args.context_window,
         )
     except Exception as e:
         print(f"Contextual interpretation failed: {e}", file=sys.stderr)

@@ -36,6 +36,37 @@ def _image_to_data_url(path: Path) -> str:
     return f"data:{mime};base64,{b64}"
 
 
+def _find_json_bounds(text: str) -> tuple[int, int] | None:
+    """Find the first balanced JSON object in a text blob."""
+    start = text.find("{")
+    if start == -1:
+        return None
+
+    depth = 0
+    in_string = False
+    escape = False
+
+    for idx in range(start, len(text)):
+        char = text[idx]
+        if in_string:
+            if escape:
+                escape = False
+            elif char == "\\":
+                escape = True
+            elif char == '"':
+                in_string = False
+        else:
+            if char == '"':
+                in_string = True
+            elif char == "{":
+                depth += 1
+            elif char == "}":
+                depth -= 1
+                if depth == 0:
+                    return start, idx + 1
+    return None
+
+
 def _extract_json_object(text: str) -> JsonObject:
     """
     Extract the first JSON object found in `text`.
@@ -45,11 +76,10 @@ def _extract_json_object(text: str) -> JsonObject:
     s = text.strip()
     if s.startswith("```"):
         s = s.strip("`")
-    start = s.find("{")
-    end = s.rfind("}")
-    if start == -1 or end == -1 or end <= start:
+    bounds = _find_json_bounds(s)
+    if bounds is None:
         raise ValueError("Model did not return a JSON object.")
-    payload = s[start : end + 1]
+    payload = s[bounds[0] : bounds[1]]
     return json.loads(payload)
 
 
@@ -113,14 +143,33 @@ def _normalize_panel_summary_payload(data: JsonObject, panel: PanelManifest) -> 
     return data
 
 
+def _compact_panel_context(panel_summary: PanelSummary) -> JsonObject:
+    """
+    Return a compact representation of a previous panel for contextual interpretation.
+
+    This prevents repeated full PanelSummary payloads from inflating prompts.
+    Keep only fields useful for continuity, setup/payoff, identity, dialogue, and action.
+    """
+    return {
+        "panel_id": panel_summary.panel_id,
+        "reading_order": panel_summary.reading_order,
+        "dialogue_notes": panel_summary.dialogue_notes,
+        "action": panel_summary.action,
+        "concise_summary": panel_summary.concise_summary,
+        "uncertainty_notes": panel_summary.uncertainty_notes,
+    }
+
+
 def _responses_json_call(
-    *,
-    client: OpenAI,
-    model: str,
-    prompt_text: str,
-    image_paths: list[Path],
-    retry_once: bool = True,
-) -> JsonObject:
+        *,
+        client: OpenAI,
+        model: str,
+        prompt_text: str,
+        image_paths: list[Path],
+        retry_once: bool = True,
+        raw_output_file: Path | None = None,
+        print_raw: bool = False,
+    ) -> JsonObject:
     """
     Call the OpenAI Responses API with text + optional images and parse JSON output.
 
@@ -147,7 +196,28 @@ def _responses_json_call(
             text = getattr(resp, "output_text", None)
             if not text:
                 raise ValueError("Empty model response text.")
-            return _extract_json_object(text)
+
+            # Optionally persist the raw model response for debugging/inspection
+            if raw_output_file is not None:
+                try:
+                    raw_output_file.parent.mkdir(parents=True, exist_ok=True)
+                    raw_output_file.write_text(text, encoding="utf-8")
+                except Exception:
+                    # best-effort only; do not fail the call because of logging
+                    pass
+
+            if print_raw:
+                print("--- RAW MODEL OUTPUT START ---")
+                print(text)
+                print("--- RAW MODEL OUTPUT END ---")
+
+            try:
+                return _extract_json_object(text)
+            except Exception as e:  # pragma: no cover - surface model output for debugging
+                snippet = text.strip()[:1000]
+                raise RuntimeError(
+                    f"Model did not return a JSON object. Raw response (truncated):\n{snippet}"
+                ) from e
         except Exception as e:
             last_err = e
             if not retry_once or attempt >= 2:
@@ -159,6 +229,9 @@ def summarize_panel(
     panel: PanelManifest,
     ocr_text: str | None,
     model: str,
+    *,
+    raw_output_dir: Path | None = None,
+    print_raw: bool = False,
 ) -> PanelSummary:
     """Summarize one individual panel image."""
     client = OpenAI()
@@ -169,11 +242,17 @@ def summarize_panel(
         prompt_text += "\nOCR (may be noisy; prefer what you can directly read in the image):\n"
         prompt_text += ocr_text.strip()[:12000]
 
+    raw_output_file = None
+    if raw_output_dir is not None:
+        raw_output_file = Path(raw_output_dir) / f"{panel.panel_id}.raw.txt"
+
     data = _responses_json_call(
         client=client,
         model=model,
         prompt_text=prompt_text,
         image_paths=[Path(panel.cropped_image_path)],
+        raw_output_file=raw_output_file,
+        print_raw=print_raw,
     )
 
     data["panel_id"] = panel.panel_id
@@ -249,9 +328,9 @@ def summarize_contextual_panel(
         prompt_text += "\n\nKnown cast context (JSON):\n"
         prompt_text += json.dumps(cast_context, ensure_ascii=False)
     if previous_panel_summaries:
-        prompt_text += "\n\nPrevious panel summaries (JSON array):\n"
+        prompt_text += "\n\nPrevious local panel context (compact JSON array):\n"
         prompt_text += json.dumps(
-            [ps.model_dump() for ps in previous_panel_summaries],
+            [_compact_panel_context(ps) for ps in previous_panel_summaries],
             ensure_ascii=False,
         )
     prompt_text += "\n\nCurrent panel summary (JSON object):\n"
@@ -275,14 +354,27 @@ def summarize_contextual_panels(
     panel_summaries: list[PanelSummary],
     cast_context: dict | None,
     model: str,
+    *,
+    context_window: int = 3,
 ) -> list[ContextualPanelInterpretation]:
+    """Interpret panels with bounded local history.
+
+    context_window controls how many immediately previous panels are passed into
+    each contextual interpretation call. This avoids quadratic prompt growth.
+    """
+    if context_window < 0:
+        raise ValueError("context_window must be >= 0")
+
     ordered = sorted(panel_summaries, key=lambda ps: ps.reading_order)
     contextual: list[ContextualPanelInterpretation] = []
     for index, panel_summary in enumerate(ordered):
+        start = max(0, index - context_window)
+        previous_window = ordered[start:index]
+
         contextual.append(
             summarize_contextual_panel(
                 panel_summary=panel_summary,
-                previous_panel_summaries=ordered[:index],
+                previous_panel_summaries=previous_window,
                 cast_context=cast_context,
                 model=model,
             )

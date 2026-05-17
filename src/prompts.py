@@ -5,6 +5,10 @@ Read the panel image and produce a structured JSON summary. Use visible dialogue
 Do not invent character names unless explicitly shown.
 If something is uncertain, say it is uncertain.
 
+Return EXACTLY one valid JSON object and NOTHING ELSE.
+Do not wrap the response in markdown or code fences.
+Do not append any explanation, error note, or extra text.
+
 Return JSON with:
 - panel_id
 - reading_order (integer)
@@ -13,6 +17,7 @@ Return JSON with:
 - action (string)
 - uncertainty_notes (JSON array of strings)
 - concise_summary (string)
+Return ONLY a single JSON object and nothing else.
 """
 
 
@@ -20,17 +25,18 @@ CONTEXTUAL_PANEL_INTERPRETATION_PROMPT = """You are interpreting a comic/manhwa 
 
 You will receive:
 1. Optional known cast context.
-2. Previous panel summaries.
+2. A compact local window of previous panel summaries.
 3. The current panel summary.
 4. OCR/dialogue notes if available.
 
 Do not treat the current panel in isolation.
-Use previous panels to identify setup/payoff, joke structure, callbacks, reveals, reactions, emotional turns, or continuity.
+Use the local previous-panel window to identify immediate setup/payoff, joke structure, callbacks, reveals, reactions, emotional turns, or continuity.
+Do not assume you have the full chapter history.
 Resolve likely character identities only when supported by visual cues, dialogue continuity, or cast context.
 Do not invent character names, motives, or unseen events.
 
 Important:
-- If a joke is set up in a previous panel and paid off in the current panel, explain that mechanism.
+- If a joke is set up in a previous local panel and paid off in the current panel, explain that mechanism.
 - If a character trait changes the meaning of the panel, explicitly state it.
 - If identity is uncertain, mark confidence as low or uncertain.
 - Prefer corrected story function over generic visual description.
