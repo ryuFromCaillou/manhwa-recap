@@ -1,428 +1,469 @@
 
-````text
-Goal: Add a panel-level pipeline to the manhwa-recap project.
 
-Current project state:
-- app.py has a `summarize` CLI command that discovers ordered images, builds chunks, optionally runs OCR, summarizes chunks, then synthesizes a chapter summary.
-- cropper.py already supports simple grid crops and explicit crop boxes using Pillow.
-- ocr.py has `run_ocr(Path)` and can already OCR any image path.
-- summarize.py already has reusable API call helpers and `summarize_chunk()` / `summarize_chapter()`.
-- schemas.py has `ChunkManifest`, `OCRResult`, `ChunkSummary`, and `ChapterSummary`.
+The current code already has the right conceptual path: `summarize_panel(...)`, `summarize_contextual_panels(...)`, `summarize_beats_from_contextual_panel_interpretations(...)`, and `summarize_chapter_from_beats(...)` exist in `summarize.py` . The prompts also already define contextual interpretation and beat grouping behavior, including setup/payoff and adaptation notes . So transcript generation should extend this pipeline, not replace it.
 
-New target pipeline:
-chapter images
-→ panelize pages
-→ save individual panel crops
-→ write `panels/manifest.json`
-→ OCR each panel
-→ summarize each panel
-→ group panel summaries into narrative beats
-→ synthesize final chapter summary from beats
+Codex implementation order:
 
-Implement in small commits.
+````md
+# Transcript Generation Implementation Orders
 
-1. Add panel schemas in `schemas.py`
+## Goal
 
-Add these Pydantic models:
+Add a transcript generation stage after beat generation.
+
+The transcript must align narration lines to panel IDs. Beats are used for narrative coherence, but panels remain the synchronization unit for video/motion-comic production.
+
+Final output should include:
+
+- `transcript.json`
+- `transcript.txt`
+- Optional future support for `transcript.srt` or timeline export
+
+The transcript should not be a loose chapter summary. It should be a structured script ledger where each line knows which panel or panels it belongs to.
+
+---
+
+## 1. Extend schemas.py
+
+Add the following Pydantic models.
 
 ```python
-class PanelManifest(BaseModel):
+class TranscriptLine(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
-    panel_id: str
-    source_image_path: str
-    cropped_image_path: str
-    page_index: int
-    panel_index: int
-    reading_order: int
-    bbox: list[int]
-
-
-class PanelOCRResult(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    panel_id: str
-    text: str
-    confidence: float | None = None
-
-
-class PanelSummary(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    panel_id: str
-    reading_order: int
-    visual_description: str
-    dialogue_notes: list[str] = Field(default_factory=list)
-    action: str
-    uncertainty_notes: list[str] = Field(default_factory=list)
-    concise_summary: str
-
-
-class NarrativeBeat(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    beat_id: str
+    line_id: str
+    beat_id: str | None = None
     panel_ids: list[str] = Field(default_factory=list)
-    state_before: str
-    trigger: str
-    state_after: str
-    emotional_shift: str | None = None
-    story_function: str
-    recap_sentence: str
+
+    speaker: str = "Narrator"
+    line_type: str = "narration"
+    text: str
+
+    visual_anchor: str | None = None
+    emotional_tone: str | None = None
+    pacing: str | None = None
+
     uncertainty_notes: list[str] = Field(default_factory=list)
 
 
-class BeatSummary(BaseModel):
+class Transcript(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
-    beats: list[NarrativeBeat] = Field(default_factory=list)
-    leftover_panels: list[str] = Field(default_factory=list)
+    title: str
+    lines: list[TranscriptLine] = Field(default_factory=list)
+    unresolved_or_uncertain: list[str] = Field(default_factory=list)
 ````
 
-2. Create `panelize.py`
+Line type should support at least:
 
-Create a new module `panelize.py`.
-
-Responsibilities:
-
-* Use OpenCV to detect panel bounding boxes.
-* Use Pillow to crop boxes.
-* Save cropped panels under `output/<chapter_name>/panels/`.
-* Write `output/<chapter_name>/panels/manifest.json`.
-
-Implementation details:
-
-* Use `io_utils.discover_input_images(input_dir)` for natural image ordering.
-* Use OpenCV for detection:
-
-  * load image with `cv2.imread`
-  * convert to grayscale
-  * create content mask with `gray < white_threshold`
-  * morphologically close the mask
-  * find external contours
-  * convert contours to boxes
-  * filter tiny boxes
-  * pad boxes
-  * sort by `(top, left)`
-* Use Pillow for cropping.
-
-Add a small dataclass:
-
-```python
-@dataclass
-class PanelBox:
-    left: int
-    top: int
-    right: int
-    bottom: int
+```text
+narration
+dialogue
+sfx
+transition
+pause
 ```
 
-Functions to implement:
+Do not overbuild timing yet. The current priority is stable panel-to-line alignment.
+
+---
+
+## 2. Add transcript prompt to prompts.py
+
+Add:
 
 ```python
-def detect_panel_boxes(
-    image_path: Path,
-    *,
-    white_threshold: int = 245,
-    min_area: int = 20_000,
-    padding: int = 8,
-) -> list[PanelBox]:
+TRANSCRIPT_GENERATION_PROMPT = \"\"\"You are generating a narrated motion-comic transcript from reviewed panel interpretations and beat summaries.
+
+The transcript must align with the visual panel sequence.
+
+Rules:
+- Preserve chronology.
+- Every transcript line must include the panel_ids it corresponds to.
+- Use beats for narrative coherence, but do not lose panel-level alignment.
+- Do not invent unsupported events, dialogue, motives, or identities.
+- Use dialogue only when supported by dialogue notes/OCR/context.
+- Narration may compress action, but should not skip important visual turns.
+- If one narration line covers multiple panels, include all covered panel_ids.
+- If a panel is mostly reaction/atmosphere, create a short line or pause/transition line rather than ignoring it.
+- If uncertainty exists, include uncertainty_notes.
+- Prefer clear, adaptable narration over literary over-writing.
+
+Return JSON with:
+- title
+- lines: list of objects with line_id, beat_id, panel_ids, speaker, line_type, text, visual_anchor, emotional_tone, pacing, uncertainty_notes
+- unresolved_or_uncertain
+
+Return ONLY a single JSON object and nothing else.
+\"\"\"
+```
+
+This prompt must make alignment non-negotiable. The transcript is allowed to be good prose, but it must remain mechanically useful.
+
+---
+
+## 3. Add transcript generation function to summarize.py
+
+Add:
+
+```python
+def generate_transcript_from_beats(
+    title: str,
+    beat_summary: BeatSummary,
+    contextual_interpretations: list[ContextualPanelInterpretation],
+    model: str,
+) -> Transcript:
     ...
 ```
 
-```python
-def crop_panels_from_page(
-    image_path: Path,
-    output_dir: Path,
-    *,
-    page_index: int,
-    reading_order_start: int,
-    white_threshold: int = 245,
-    min_area: int = 20_000,
-    padding: int = 8,
-) -> tuple[list[PanelManifest], int]:
-    ...
-```
+Implementation pattern should match the existing OpenAI JSON call helpers already used in `summarize.py` .
+
+The function should serialize:
 
 ```python
-def panelize_chapter(
-    input_dir: Path,
-    output_root: Path,
-    *,
-    white_threshold: int = 245,
-    min_area: int = 20_000,
-    padding: int = 8,
-) -> Path:
-    ...
-```
-
-The manifest item should look like:
-
-```json
 {
-  "panel_id": "page_001_panel_003",
-  "source_image_path": "input/chapter_001/001.png",
-  "cropped_image_path": "output/chapter_001/panels/page_001_panel_003.png",
-  "page_index": 1,
-  "panel_index": 3,
-  "reading_order": 3,
-  "bbox": [0, 840, 720, 1220]
+    "title": title,
+    "beats": beat_summary.model_dump(),
+    "contextual_panel_interpretations": [
+        ci.model_dump() for ci in sorted(contextual_interpretations, key=lambda x: x.reading_order)
+    ],
 }
 ```
 
-3. Add debug image support
+Then call `_responses_json_call(...)` with no images, parse JSON, set `data["title"] = title`, and validate with `Transcript.model_validate(data)`.
 
-In `panelize.py`, add:
+---
+
+## 4. Add normalization for transcript payload
+
+Add helper functions:
 
 ```python
-def draw_debug_boxes(
-    image_path: Path,
-    boxes: list[PanelBox],
-    output_path: Path,
-) -> None:
+def _normalize_transcript_line_payload(value: Any, index: int) -> dict[str, Any]:
     ...
 ```
 
-This should save a copy of the page with rectangles drawn around detected panels.
+Normalization should guarantee:
 
-Then make `panelize_chapter(..., debug: bool = False)` optionally write:
+```python
+line_id = existing or f"line_{index:04d}"
+panel_ids = normalized list[str]
+speaker = normalized string fallback "Narrator"
+line_type = normalized string fallback "narration"
+text = normalized string
+uncertainty_notes = normalized list[str]
+```
+
+Reject or flag empty text lines unless line_type is `pause`.
+
+Add:
+
+```python
+def _normalize_transcript_payload(data: JsonObject, title: str) -> JsonObject:
+    ...
+```
+
+The function should normalize all lines and ensure `unresolved_or_uncertain` is a list.
+
+---
+
+## 5. Add transcript rendering to io_utils.py
+
+The existing project already renders human-readable summary text through `render_summary_text(...)` . Add a parallel renderer:
+
+```python
+def render_transcript_text(title: str, transcript: Transcript) -> str:
+    lines = []
+    lines.append(f"Title: {title}")
+    lines.append("")
+    lines.append("Transcript:")
+    lines.append("")
+
+    for line in transcript.lines:
+        panel_ref = ", ".join(line.panel_ids) if line.panel_ids else "NO_PANEL"
+        beat_ref = line.beat_id or "NO_BEAT"
+        speaker = line.speaker or "Narrator"
+        line_type = line.line_type or "narration"
+
+        lines.append(f"[{line.line_id}] [{beat_ref}] [{panel_ref}] {speaker} ({line_type}):")
+        lines.append(line.text.strip())
+
+        if line.visual_anchor:
+            lines.append(f"Visual anchor: {line.visual_anchor}")
+
+        if line.uncertainty_notes:
+            lines.append("Uncertainty:")
+            for note in line.uncertainty_notes:
+                lines.append(f"- {note}")
+
+        lines.append("")
+
+    if transcript.unresolved_or_uncertain:
+        lines.append("Unresolved or uncertain:")
+        for item in transcript.unresolved_or_uncertain:
+            lines.append(f"- {item}")
+
+    return "\\n".join(lines).strip() + "\\n"
+```
+
+This should produce a readable script while preserving panel linkage.
+
+---
+
+## 6. Add output writer
+
+Add a function either in `app.py` or `io_utils.py`:
+
+```python
+def _write_transcript_outputs(out_dir: Path, transcript: Transcript) -> tuple[Path, Path]:
+    transcript_json_path = out_dir / "transcript.json"
+    transcript_txt_path = out_dir / "transcript.txt"
+
+    io_utils.write_json(transcript_json_path, io_utils.to_jsonable(transcript))
+    io_utils.write_text(
+        transcript_txt_path,
+        io_utils.render_transcript_text(
+            title=transcript.title,
+            transcript=transcript,
+        ),
+    )
+
+    return transcript_txt_path, transcript_json_path
+```
+
+Use the existing `write_json`, `write_text`, and `to_jsonable` utilities, since those already exist and handle Pydantic models cleanly .
+
+---
+
+## 7. Add CLI command
+
+The current CLI still has a basic `summarize` command that writes `summary.json` and `summary.txt` . Add a new command instead of overloading the old one.
+
+Suggested command:
+
+```bash
+manhwa-recap transcript output/chapter_001 --title "Chapter Title"
+```
+
+Expected inputs inside the chapter output folder:
 
 ```text
-output/<chapter_name>/panel_debug/page_001_boxes.png
-output/<chapter_name>/panel_debug/page_002_boxes.png
+panel_summaries.json
+contextual_panel_interpretations.json
+beat_summary.json
 ```
 
-4. Add panel prompts in `prompts.py`
+Output:
 
-Add:
-
-```python
-PANEL_PROMPT = """You are summarizing one manhwa/comic panel.
-
-Use the image first. Use OCR only as a noisy hint.
-Do not invent character names unless visible in dialogue or already provided.
-Describe only what is visible or directly stated.
-
-Return JSON with:
-- visual_description: what is visually happening in the panel
-- dialogue_notes: spoken text or dialogue-based information
-- action: the main story action in this panel
-- uncertainty_notes: anything unclear, cropped, or hard to read
-- concise_summary: 1-2 sentence summary of the panel
-"""
+```text
+transcript.json
+transcript.txt
 ```
 
-Add:
+CLI args:
 
 ```python
-BEAT_TRACKING_PROMPT = """You are tracking narrative beats in a manhwa/comic sequence.
-
-Input: ordered panel summaries and OCR notes.
-
-A beat is a transition from one narrative state to another:
-state_before → trigger/action/revelation → state_after.
-
-Group consecutive panels into beats. Do not create a new beat unless the narrative state changes.
-Preserve panel order. Do not invent character names, motives, or events.
-Use uncertainty_notes when panel evidence is unclear.
-
-Return JSON with:
-- beats: list of objects with:
-  - beat_id
-  - panel_ids
-  - state_before
-  - trigger
-  - state_after
-  - emotional_shift
-  - story_function
-  - recap_sentence
-  - uncertainty_notes
-- leftover_panels: panels that did not clearly form a beat
-"""
+t = sub.add_parser("transcript", help="Generate aligned transcript from reviewed beats and panels")
+t.add_argument("chapter_dir", type=Path)
+t.add_argument("--title", required=True)
+t.add_argument("--model", default=DEFAULT_MODEL)
+t.add_argument("--output-format", choices=["text", "json", "both"], default="both")
 ```
 
-5. Add summarization functions in `summarize.py`
-
-Add imports for the new schemas.
-
-Add:
+Then implement:
 
 ```python
-def summarize_panel(
-    panel: PanelManifest,
-    ocr_text: str | None,
-    model: str,
-) -> PanelSummary:
-    ...
-```
-
-This should be similar to `summarize_chunk()`, but:
-
-* use `prompts.PANEL_PROMPT`
-* include panel id and reading order
-* attach `[Path(panel.cropped_image_path)]`
-* set `data["panel_id"]`
-* set `data["reading_order"]`
-* return `PanelSummary.model_validate(data)`
-
-Add:
-
-```python
-def track_beats(
-    panel_summaries: list[PanelSummary],
-    model: str,
-    *,
-    window_size: int = 12,
-) -> BeatSummary:
-    ...
-```
-
-Initial simple version:
-
-* Sort panels by `reading_order`.
-* Serialize summaries as JSON.
-* Send all panel summaries into one API call using `BEAT_TRACKING_PROMPT`.
-* No images needed.
-* Validate as `BeatSummary`.
-
-Do not overcomplicate windowing yet. Add `window_size` parameter but leave a TODO for chunked beat tracking.
-
-6. Add CLI command: `panelize`
-
-In `app.py`, import the new module:
-
-```python
-from . import chunker, io_utils, panelize
-```
-
-Add subcommand:
-
-```python
-pz = sub.add_parser("panelize", help="Crop ordered chapter images into individual panels")
-pz.add_argument("input_dir", type=Path)
-pz.add_argument("--output-root", type=Path, default=Path("output"))
-pz.add_argument("--white-threshold", type=int, default=245)
-pz.add_argument("--min-area", type=int, default=20_000)
-pz.add_argument("--padding", type=int, default=8)
-pz.add_argument("--debug", action="store_true")
-```
-
-Add command handler:
-
-```python
-def _cmd_panelize(args: argparse.Namespace) -> int:
+def _cmd_transcript(args: argparse.Namespace) -> int:
     try:
-        manifest_path = panelize.panelize_chapter(
-            input_dir=args.input_dir,
-            output_root=args.output_root,
-            white_threshold=args.white_threshold,
-            min_area=args.min_area,
-            padding=args.padding,
-            debug=args.debug,
-        )
+        AppConfig.load()
     except Exception as e:
-        print(f"Panelizing failed: {e}", file=sys.stderr)
+        print(str(e), file=sys.stderr)
         return 2
 
-    print(str(manifest_path))
+    beat_path = args.chapter_dir / "beat_summary.json"
+    contextual_path = args.chapter_dir / "contextual_panel_interpretations.json"
+
+    try:
+        beat_summary = BeatSummary.model_validate(io_utils.read_json(beat_path))
+        contextual = [
+            ContextualPanelInterpretation.model_validate(x)
+            for x in io_utils.read_json(contextual_path)
+        ]
+    except Exception as e:
+        print(f"Failed to load transcript inputs: {e}", file=sys.stderr)
+        return 2
+
+    try:
+        transcript = generate_transcript_from_beats(
+            title=args.title,
+            beat_summary=beat_summary,
+            contextual_interpretations=contextual,
+            model=args.model,
+        )
+    except Exception as e:
+        print(f"Transcript generation failed: {e}", file=sys.stderr)
+        return 3
+
+    txt_path, json_path = _write_transcript_outputs(args.chapter_dir, transcript)
+
+    if args.output_format == "json":
+        print(str(json_path))
+    elif args.output_format == "text":
+        print(str(txt_path))
+    else:
+        print(str(txt_path))
+        print(str(json_path))
+
     return 0
 ```
 
-Update `main()`:
+Also add `read_json(path: Path) -> Any` to `io_utils.py`.
+
+---
+
+## 8. Add alignment validation
+
+After transcript generation, validate that panel coverage is sane.
+
+Add:
 
 ```python
-if args.cmd == "panelize":
-    return _cmd_panelize(args)
+def validate_transcript_alignment(
+    transcript: Transcript,
+    contextual_interpretations: list[ContextualPanelInterpretation],
+) -> list[str]:
+    ...
 ```
 
-7. Add CLI command: `summarize-panels`
+Checks:
 
-Add subcommand:
+```text
+- Every transcript panel_id exists in contextual_interpretations.
+- Every important panel appears in at least one transcript line.
+- No line has an empty panel_ids list unless line_type is transition or pause.
+- Beat IDs used by transcript lines exist in beat_summary.
+- Panel ordering does not go backward across transcript lines unless explicitly justified.
+```
+
+Return warnings, do not fail hard at first. Store warnings in `transcript.unresolved_or_uncertain`.
+
+This is important because the model may generate good narration while silently dropping a reaction panel. For your vision, that is a failure.
+
+---
+
+## 9. Add optional second pass: transcript alignment repair
+
+If validation finds missing panels, run a repair pass.
+
+Add prompt:
 
 ```python
-sp = sub.add_parser("summarize-panels", help="Summarize panelized chapter and track narrative beats")
-sp.add_argument("input_dir", type=Path)
-sp.add_argument("--title", required=True)
-sp.add_argument("--model", default=DEFAULT_MODEL)
-sp.add_argument("--use-ocr", action="store_true")
-sp.add_argument("--output-root", type=Path, default=Path("output"))
-sp.add_argument("--output-format", default=DEFAULT_OUTPUT_FORMAT, choices=["text", "json", "both"])
+TRANSCRIPT_ALIGNMENT_REPAIR_PROMPT = \"\"\"You are repairing an aligned motion-comic transcript.
+
+You will receive:
+1. Existing transcript.
+2. Ordered contextual panel interpretations.
+3. Alignment warnings.
+
+Fix only alignment problems.
+Preserve good existing narration when possible.
+Add short narration, pause, transition, or reaction lines for missing panels.
+Do not invent unsupported story details.
+
+Return the full corrected transcript JSON.
+\"\"\"
 ```
 
-Handler behavior:
+Function:
 
-* Compute `out_dir = output_root / input_dir.name`
-* Read `out_dir / "panels" / "manifest.json"`
-* Validate manifest entries into `PanelManifest`
-* If `--use-ocr`, run OCR on each `cropped_image_path`
-* Save `panel_ocr.json`
-* Summarize each panel with `summarize_panel`
-* Save `panel_summaries.json`
-* Run `track_beats`
-* Save `beats.json`
-* For now, synthesize chapter either:
-
-  * Option A: directly from beat recap sentences with a new function, or
-  * Option B: write beat recap output only and leave chapter synthesis for a later commit.
-
-Prefer Option B for this commit: stop at `beats.json` and print the path.
-
-8. Add manual fallback later, not now
-
-Do not remove or rewrite `cropper.py`.
-Keep it as manual crop fallback.
-
-Later, add support for a manual boxes file:
-
-```text
-input/chapter_001/panel_boxes.json
+```python
+def repair_transcript_alignment(
+    transcript: Transcript,
+    contextual_interpretations: list[ContextualPanelInterpretation],
+    warnings: list[str],
+    model: str,
+) -> Transcript:
+    ...
 ```
 
-But do not implement this in the first pass unless the automatic detector fails badly.
-
-9. Add dependency note
-
-If the project has `pyproject.toml`, add OpenCV as an optional or main dependency:
-
-```text
-opencv-python
-```
-
-Pillow already appears to be used. If not listed, ensure `pillow` is included.
-
-10. Add basic tests or smoke checks
-
-Add simple smoke tests if a test framework exists. Otherwise, ensure these commands run:
+For now, make this optional with CLI flag:
 
 ```bash
-python -m manhwa_recap.app panelize input/chapter_001 --debug
-python -m manhwa_recap.app summarize-panels input/chapter_001 --title "Chapter 1" --use-ocr
+--repair-alignment
 ```
 
-Expected outputs:
+---
+
+## 10. Expected output shape
+
+Example transcript JSON:
+
+```json
+{
+  "title": "Chapter Title",
+  "lines": [
+    {
+      "line_id": "line_0001",
+      "beat_id": "beat_001",
+      "panel_ids": ["page_003_panel_001"],
+      "speaker": "Katara",
+      "line_type": "narration",
+      "text": "Toph asked if we wanted to know what fireworks sounded like to her.",
+      "visual_anchor": "Toph and the others look up beneath the fireworks.",
+      "emotional_tone": "playful setup",
+      "pacing": "short setup line",
+      "uncertainty_notes": []
+    },
+    {
+      "line_id": "line_0002",
+      "beat_id": "beat_001",
+      "panel_ids": ["page_003_panel_002"],
+      "speaker": "Katara",
+      "line_type": "narration",
+      "text": "Then she answered herself with a sudden blast of sound that sent everyone jumping.",
+      "visual_anchor": "The group reacts in shock to the loud sound effect.",
+      "emotional_tone": "comic payoff",
+      "pacing": "fast punchline",
+      "uncertainty_notes": []
+    }
+  ],
+  "unresolved_or_uncertain": []
+}
+```
+
+The key property is this: every transcript line is directly tied to one or more panels. That gives you the foundation for later video timing, panel zooms, voiceover generation, subtitle generation, and review UI.
+
+---
+
+## 11. Do not do this yet
+
+Do not jump straight to SRT timestamps.
+
+Do not generate a single chapter narration paragraph.
+
+Do not let beats become the smallest unit.
+
+Do not discard panel IDs after beat grouping.
+
+Do not rely only on OCR dialogue. OCR is useful, but your current OCR wrapper is intentionally basic and may be noisy .
+
+---
+
+## Final architecture
+
+The desired pipeline should become:
 
 ```text
-output/chapter_001/panels/manifest.json
-output/chapter_001/panels/*.png
-output/chapter_001/panel_debug/*_boxes.png
-output/chapter_001/panel_ocr.json
-output/chapter_001/panel_summaries.json
-output/chapter_001/beats.json
+images
+→ panel crops / manifests
+→ OCR
+→ panel summaries
+→ contextual panel interpretations
+→ beat summaries
+→ aligned transcript
+→ transcript validation
+→ optional alignment repair
+→ transcript.json + transcript.txt
 ```
-
-Acceptance criteria:
-
-* Existing `summarize` command still works.
-* `panelize` creates cropped panel files and a manifest.
-* Manifest entries preserve reading order.
-* Debug images show bounding boxes when `--debug` is passed.
-* `summarize-panels` can consume the manifest.
-* OCR runs against panel crops, not whole chunks.
-* Panel summaries validate against `PanelSummary`.
-* Beat tracking validates against `BeatSummary`.
-* No panel appears in two beats unless explicitly duplicated by model error; if duplicates occur, leave a TODO for validation cleanup.
-
-Important design rule:
-Panelizing is not just cropping. It creates the chronological map for storytelling. The cropped images are useful, but `manifest.json` is the key artifact.
 
 

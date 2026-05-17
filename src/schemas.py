@@ -125,4 +125,30 @@ class ContextualPanelInterpretation(BaseModel):
     concise_contextual_summary: str
 
 
+class TranscriptLine(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    line_id: str
+    beat_id: str | None = None
+    panel_ids: list[str] = Field(default_factory=list)
+
+    speaker: str = "Narrator"
+    line_type: str = "narration"
+    text: str
+
+    visual_anchor: str | None = None
+    emotional_tone: str | None = None
+    pacing: str | None = None
+
+    uncertainty_notes: list[str] = Field(default_factory=list)
+
+
+class Transcript(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    title: str
+    lines: list[TranscriptLine] = Field(default_factory=list)
+    unresolved_or_uncertain: list[str] = Field(default_factory=list)
+
+
 JsonObject = dict[str, Any]
