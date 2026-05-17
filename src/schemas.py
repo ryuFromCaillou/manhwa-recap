@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class OCRResult(BaseModel):
@@ -80,6 +80,17 @@ class NarrativeBeat(BaseModel):
     story_function: str
     recap_sentence: str
     uncertainty_notes: list[str] = Field(default_factory=list)
+
+    @field_validator("beat_id", mode="before")
+    @classmethod
+    def _coerce_beat_id(cls, value: Any) -> str:
+        if value is None:
+            return ""
+        if isinstance(value, str):
+            return value.strip()
+        if isinstance(value, (int, float, bool)):
+            return str(int(value)) if isinstance(value, bool) else str(value)
+        return str(value).strip()
 
 
 class BeatSummary(BaseModel):
