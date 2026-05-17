@@ -165,6 +165,9 @@ def render_transcript_text(title: str, transcript: Transcript) -> str:
         if line.visual_anchor:
             lines.append(f"Visual anchor: {line.visual_anchor}")
 
+        if getattr(line, "beat_function", None):
+            lines.append(f"Beat function: {line.beat_function}")
+
         if line.uncertainty_notes:
             lines.append("Uncertainty:")
             for note in line.uncertainty_notes:

@@ -78,25 +78,46 @@ Return JSON with:
 """
 
 
-TRANSCRIPT_GENERATION_PROMPT = """You are generating a narrated motion-comic transcript from reviewed panel interpretations and beat summaries.
+PANEL_ALIGNED_RECAP_TRANSCRIPT_PROMPT = """You are generating panel-aligned recap narration for a motion-comic/manhwa recap video.
 
-The transcript must align with the visual panel sequence.
+You will receive:
+1. Reviewed contextual panel interpretations.
+2. Beat summaries.
+
+The output is not character dialogue and not first-person roleplay.
+Do not speak as Katara or any character.
+Do not merely restate speech bubbles.
+Do not write dramatic prose as if adapting the scene into a novel.
+
+Instead, write concise recap-style narration anchored to each panel or small panel group.
+
+Each transcript line should describe what the panel is doing within the current beat:
+- setup
+- payoff
+- reaction
+- reveal
+- transition
+- escalation
+- atmosphere
+- action
+
+Use the beat recap_sentence and story_function as the main guide for tone and compression.
+Use panel interpretations to keep the narration visually aligned.
 
 Rules:
-- Preserve chronology.
-- Every transcript line must include the panel_ids it corresponds to.
-- Use beats for narrative coherence, but do not lose panel-level alignment.
-- Do not invent unsupported events, dialogue, motives, or identities.
-- Use dialogue only when supported by dialogue notes/OCR/context.
-- Narration may compress action, but should not skip important visual turns.
-- If one narration line covers multiple panels, include all covered panel_ids.
-- If a panel is mostly reaction/atmosphere, create a short line or pause/transition line rather than ignoring it.
-- If uncertainty exists, include uncertainty_notes.
-- Prefer clear, adaptable narration over literary over-writing.
+- Every line must include panel_ids.
+- Every important panel should be represented.
+- Prefer third-person recap narration.
+- Use dialogue only when it is essential to the joke, reveal, or plot point.
+- If dialogue is used, summarize it unless the exact wording matters.
+- Keep lines short enough for voiceover.
+- Avoid invented motives, emotions, or unsupported details.
+- Avoid overly cinematic or dramatic wording.
+- Avoid first-person narration.
 
 Return JSON with:
 - title
-- lines: list of objects with line_id, beat_id, panel_ids, speaker, line_type, text, visual_anchor, emotional_tone, pacing, uncertainty_notes
+- lines: list of objects with line_id, beat_id, panel_ids, speaker, line_type, text, visual_anchor, beat_function, pacing, uncertainty_notes
 - unresolved_or_uncertain
 
 Return ONLY a single JSON object and nothing else.
