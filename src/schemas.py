@@ -132,12 +132,12 @@ class TranscriptLine(BaseModel):
     beat_id: str | None = None
     panel_ids: list[str] = Field(default_factory=list)
 
-    speaker: str = "Narrator"
-    line_type: str = "narration"
+    speaker: str = "Recap Narrator"
+    line_type: str = "recap"
     text: str
 
     visual_anchor: str | None = None
-    emotional_tone: str | None = None
+    beat_function: str | None = None
     pacing: str | None = None
 
     uncertainty_notes: list[str] = Field(default_factory=list)

@@ -148,14 +148,22 @@ def _normalize_transcript_line_payload(value: Any, index: int) -> dict[str, Any]
     panel_ids = [p.strip() for p in panel_ids if p and str(p).strip()]
 
     speaker = _normalize_str(data.get("speaker")) or "Narrator"
-    line_type = _normalize_str(data.get("line_type")) or "narration"
+    line_type = _normalize_str(data.get("line_type")) or "recap"
     text = _normalize_str(data.get("text"))
 
     visual_anchor = _normalize_str(data.get("visual_anchor")) or None
-    emotional_tone = _normalize_str(data.get("emotional_tone")) or None
+    beat_function = _normalize_str(data.get("beat_function")) or None
+    # Back-compat: older prompt/schema may return emotional_tone.
+    if not beat_function:
+        beat_function = _normalize_str(data.get("emotional_tone")) or None
     pacing = _normalize_str(data.get("pacing")) or None
 
     uncertainty_notes = _normalize_str_list(data.get("uncertainty_notes"))
+
+    allowed_line_types = {"recap", "dialogue_quote", "sfx", "transition", "pause"}
+    if line_type not in allowed_line_types:
+        line_type = "recap"
+        uncertainty_notes.append("Invalid line_type; normalized to recap.")
 
     if not text and line_type not in {"pause"}:
         line_type = "pause"
@@ -165,11 +173,11 @@ def _normalize_transcript_line_payload(value: Any, index: int) -> dict[str, Any]
         "line_id": line_id,
         "beat_id": beat_id,
         "panel_ids": panel_ids,
-        "speaker": speaker,
+        "speaker": speaker or "Recap Narrator",
         "line_type": line_type,
         "text": text,
         "visual_anchor": visual_anchor,
-        "emotional_tone": emotional_tone,
+        "beat_function": beat_function,
         "pacing": pacing,
         "uncertainty_notes": uncertainty_notes,
     }
@@ -526,9 +534,31 @@ def validate_transcript_alignment(
     contextual_panel_id_set = set(contextual_panel_ids)
 
     transcript_panel_ids: list[str] = []
+    first_person_markers = [
+        "i saw",
+        "i watched",
+        "i realized",
+        "from my perspective",
+        "we saw",
+        "we watched",
+        "we realized",
+        "our perspective",
+        "my perspective",
+    ]
+    dialogue_like_markers = ['"', "“", "”", "’", "‘"]
+    dialogueish_count = 0
+    line_count = max(1, len(transcript.lines))
     for line in transcript.lines:
         if not line.panel_ids and line.line_type not in {"transition", "pause"}:
             warnings.append(f"Line {line.line_id} has empty panel_ids (type={line.line_type}).")
+        text_lower = (line.text or "").strip().lower()
+        if text_lower:
+            if any(marker in text_lower for marker in first_person_markers):
+                warnings.append(f"Possible first-person narration in line {line.line_id}.")
+            if line.line_type in {"dialogue_quote"}:
+                dialogueish_count += 1
+            elif any(m in (line.text or "") for m in dialogue_like_markers):
+                dialogueish_count += 1
         for pid in line.panel_ids:
             transcript_panel_ids.append(pid)
             if pid not in contextual_panel_id_set:
@@ -563,6 +593,11 @@ def validate_transcript_alignment(
             )
         last_idx = max(last_idx, max(resolved))
 
+    # Dialogue-heavy warning (soft heuristic).
+    # If more than ~30% of lines look like dialogue, it likely violates recap style.
+    if (dialogueish_count / line_count) > 0.30:
+        warnings.append(f"Transcript appears dialogue-heavy ({dialogueish_count}/{line_count} lines).")
+
     return warnings
 
 
@@ -583,7 +618,7 @@ def generate_transcript_from_beats(
         ],
     }
 
-    prompt_text = prompts.TRANSCRIPT_GENERATION_PROMPT.strip()
+    prompt_text = prompts.PANEL_ALIGNED_RECAP_TRANSCRIPT_PROMPT.strip()
     prompt_text += "\n\nInput JSON:\n"
     prompt_text += json.dumps(payload, ensure_ascii=False)
 
