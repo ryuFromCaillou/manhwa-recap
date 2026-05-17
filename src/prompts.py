@@ -78,4 +78,45 @@ Return JSON with:
 """
 
 
+TRANSCRIPT_GENERATION_PROMPT = """You are generating a narrated motion-comic transcript from reviewed panel interpretations and beat summaries.
+
+The transcript must align with the visual panel sequence.
+
+Rules:
+- Preserve chronology.
+- Every transcript line must include the panel_ids it corresponds to.
+- Use beats for narrative coherence, but do not lose panel-level alignment.
+- Do not invent unsupported events, dialogue, motives, or identities.
+- Use dialogue only when supported by dialogue notes/OCR/context.
+- Narration may compress action, but should not skip important visual turns.
+- If one narration line covers multiple panels, include all covered panel_ids.
+- If a panel is mostly reaction/atmosphere, create a short line or pause/transition line rather than ignoring it.
+- If uncertainty exists, include uncertainty_notes.
+- Prefer clear, adaptable narration over literary over-writing.
+
+Return JSON with:
+- title
+- lines: list of objects with line_id, beat_id, panel_ids, speaker, line_type, text, visual_anchor, emotional_tone, pacing, uncertainty_notes
+- unresolved_or_uncertain
+
+Return ONLY a single JSON object and nothing else.
+"""
+
+
+TRANSCRIPT_ALIGNMENT_REPAIR_PROMPT = """You are repairing an aligned motion-comic transcript.
+
+You will receive:
+1. Existing transcript.
+2. Ordered contextual panel interpretations.
+3. Alignment warnings.
+
+Fix only alignment problems.
+Preserve good existing narration when possible.
+Add short narration, pause, transition, or reaction lines for missing panels.
+Do not invent unsupported story details.
+
+Return the full corrected transcript JSON.
+"""
+
+
 

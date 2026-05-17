@@ -5,6 +5,8 @@ import re
 from pathlib import Path
 from typing import Any, Iterable
 
+from .schemas import Transcript
+
 
 ALLOWED_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 
@@ -141,4 +143,39 @@ def render_summary_text(
     lines.append("Unresolved or uncertain:")
     for item in unresolved_or_uncertain:
         lines.append(f"- {item}")
+    return "\n".join(lines).strip() + "\n"
+
+
+def render_transcript_text(title: str, transcript: Transcript) -> str:
+    lines: list[str] = []
+    lines.append(f"Title: {title}")
+    lines.append("")
+    lines.append("Transcript:")
+    lines.append("")
+
+    for line in transcript.lines:
+        panel_ref = ", ".join(line.panel_ids) if line.panel_ids else "NO_PANEL"
+        beat_ref = line.beat_id or "NO_BEAT"
+        speaker = line.speaker or "Narrator"
+        line_type = line.line_type or "narration"
+
+        lines.append(f"[{line.line_id}] [{beat_ref}] [{panel_ref}] {speaker} ({line_type}):")
+        lines.append((line.text or "").strip())
+
+        if line.visual_anchor:
+            lines.append(f"Visual anchor: {line.visual_anchor}")
+
+        if line.uncertainty_notes:
+            lines.append("Uncertainty:")
+            for note in line.uncertainty_notes:
+                lines.append(f"- {note}")
+
+        lines.append("")
+
+    if transcript.unresolved_or_uncertain:
+        lines.append("Unresolved or uncertain:")
+        for item in transcript.unresolved_or_uncertain:
+            lines.append(f"- {item}")
+        lines.append("")
+
     return "\n".join(lines).strip() + "\n"

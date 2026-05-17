@@ -11,12 +11,22 @@ from .config import (
     AppConfig,
 )
 from .ocr import run_ocr
-from .schemas import BeatSummary, ChapterSummary, PanelManifest, PanelSummary
+from .schemas import (
+    BeatSummary,
+    ChapterSummary,
+    ContextualPanelInterpretation,
+    PanelManifest,
+    PanelSummary,
+    Transcript,
+)
 from .summarize import (
+    generate_transcript_from_beats,
+    repair_transcript_alignment,
     summarize_beats_from_contextual_panel_interpretations,
     summarize_chapter_from_beats,
     summarize_contextual_panels,
     summarize_panel,
+    validate_transcript_alignment,
 )
 
 
@@ -70,6 +80,18 @@ def _build_parser() -> argparse.ArgumentParser:
     p_panel.add_argument("--black-threshold", type=int, default=15)
     p_panel.add_argument("--min-area", type=int, default=20_000)
     p_panel.add_argument("--padding", type=int, default=8)
+
+    t = sub.add_parser("transcript", help="Generate aligned transcript from reviewed beats and panels")
+    t.add_argument("chapter_dir", type=Path)
+    t.add_argument("--title", required=True)
+    t.add_argument("--model", default=DEFAULT_MODEL)
+    t.add_argument(
+        "--output-format",
+        default=DEFAULT_OUTPUT_FORMAT,
+        choices=["text", "json", "both"],
+        help="Controls what is printed to stdout (files are still written).",
+    )
+    t.add_argument("--repair-alignment", action="store_true")
     return p
 
 
@@ -94,6 +116,22 @@ def _write_outputs(out_dir: Path, chapter: ChapterSummary) -> tuple[Path, Path]:
         ),
     )
     return summary_txt_path, summary_json_path
+
+
+def _write_transcript_outputs(out_dir: Path, transcript: Transcript) -> tuple[Path, Path]:
+    transcript_json_path = out_dir / "transcript.json"
+    transcript_txt_path = out_dir / "transcript.txt"
+
+    io_utils.write_json(transcript_json_path, io_utils.to_jsonable(transcript))
+    io_utils.write_text(
+        transcript_txt_path,
+        io_utils.render_transcript_text(
+            title=transcript.title,
+            transcript=transcript,
+        ),
+    )
+
+    return transcript_txt_path, transcript_json_path
 
 
 def _cmd_panel_summarize(args: argparse.Namespace) -> int:
@@ -211,6 +249,68 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_transcript(args: argparse.Namespace) -> int:
+    try:
+        AppConfig.load()
+    except Exception as e:
+        print(str(e), file=sys.stderr)
+        return 2
+
+    beat_path = args.chapter_dir / "beat_summary.json"
+    contextual_path = args.chapter_dir / "contextual_panel_interpretations.json"
+
+    try:
+        beat_summary = BeatSummary.model_validate(io_utils.read_json(beat_path))
+        contextual = [
+            ContextualPanelInterpretation.model_validate(x)
+            for x in io_utils.read_json(contextual_path)
+        ]
+    except Exception as e:
+        print(f"Failed to load transcript inputs: {e}", file=sys.stderr)
+        return 2
+
+    try:
+        transcript = generate_transcript_from_beats(
+            title=args.title,
+            beat_summary=beat_summary,
+            contextual_interpretations=contextual,
+            model=args.model,
+        )
+    except Exception as e:
+        print(f"Transcript generation failed: {e}", file=sys.stderr)
+        return 3
+
+    if args.repair_alignment:
+        warnings = validate_transcript_alignment(
+            transcript,
+            contextual_interpretations=contextual,
+            beat_summary=beat_summary,
+        )
+        if warnings:
+            try:
+                transcript = repair_transcript_alignment(
+                    transcript=transcript,
+                    contextual_interpretations=contextual,
+                    warnings=warnings,
+                    model=args.model,
+                )
+            except Exception as e:
+                print(f"Transcript alignment repair failed: {e}", file=sys.stderr)
+                return 3
+
+    txt_path, json_path = _write_transcript_outputs(args.chapter_dir, transcript)
+
+    if args.output_format == "json":
+        print(str(json_path))
+    elif args.output_format == "text":
+        print(str(txt_path))
+    else:
+        print(str(txt_path))
+        print(str(json_path))
+
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     """CLI entry point; returns a process exit code."""
     parser = _build_parser()
@@ -219,6 +319,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_panelize(args)
     if args.cmd == "panel-summarize":
         return _cmd_panel_summarize(args)
+    if args.cmd == "transcript":
+        return _cmd_transcript(args)
     print(f"Unknown command: {args.cmd}", file=sys.stderr)
     return 2
 
