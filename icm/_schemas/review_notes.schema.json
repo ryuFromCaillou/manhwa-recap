@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewNotes",
+  "type": "object",
+  "required": ["chapter_id", "stage", "source_artifacts", "status", "issues"],
+  "properties": {
+    "chapter_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "source_artifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["unchecked", "needs_review", "approved", "rejected", "superseded"]
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue_id", "severity", "type", "location", "description", "suggested_fix"],
+        "properties": {
+          "issue_id": { "type": "string" },
+          "severity": { "type": "string", "enum": ["low", "medium", "high"] },
+          "type": { "type": "string" },
+          "location": { "type": "string" },
+          "description": { "type": "string" },
+          "suggested_fix": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
