@@ -55,7 +55,7 @@ Do not turn panel summaries into fan-fiction. Stay grounded in the supplied arti
 
 Before working, identify the current stage from the folder path or user request.
 
-Read the nearest `CONTEXT.md` first, then repository root `CONTEXT.md` (a shim), then `icm/CONTEXT.md`, then only the files referenced by those contracts.
+Read the nearest `CONTEXT.md` first, then root `icm/CONTEXT.md`, then only the files referenced by those contracts.
 
 Do not load unrelated context just because it exists.
 
