@@ -199,6 +199,46 @@ def _normalize_transcript_payload(data: JsonObject, title: str) -> JsonObject:
     return data
 
 
+def _normalize_beat_payload(value: Any, index: int) -> dict[str, Any]:
+    data: dict[str, Any] = {}
+    if isinstance(value, dict):
+        data = dict(value)
+    elif value is None:
+        data = {}
+    else:
+        data = {"recap_sentence": _normalize_str(value)}
+
+    beat_id = _normalize_str(data.get("beat_id")) or f"beat_{index:04d}"
+    panel_ids = _normalize_str_list(data.get("panel_ids"))
+    panel_ids = [p.strip() for p in panel_ids if p and str(p).strip()]
+
+    return {
+        "beat_id": beat_id,
+        "panel_ids": panel_ids,
+        "state_before": _normalize_str(data.get("state_before")),
+        "trigger": _normalize_str(data.get("trigger")),
+        "state_after": _normalize_str(data.get("state_after")),
+        "emotional_shift": _normalize_str(data.get("emotional_shift")) or None,
+        "story_function": _normalize_str(data.get("story_function")),
+        "recap_sentence": _normalize_str(data.get("recap_sentence")),
+        "uncertainty_notes": _normalize_str_list(data.get("uncertainty_notes")),
+    }
+
+
+def _normalize_beat_summary_payload(data: JsonObject) -> JsonObject:
+    if not isinstance(data, dict):
+        data = {}
+
+    raw_beats = data.get("beats")
+    if not isinstance(raw_beats, list):
+        raw_beats = []
+    data["beats"] = [
+        _normalize_beat_payload(item, idx) for idx, item in enumerate(raw_beats, start=1)
+    ]
+    data["leftover_panels"] = _normalize_str_list(data.get("leftover_panels"))
+    return data
+
+
 def _normalize_panel_summary_payload(data: JsonObject, panel: PanelManifest) -> JsonObject:
     data["reading_order"] = _normalize_int_field(
         data.get("reading_order"), fallback=panel.reading_order
@@ -471,6 +511,7 @@ def summarize_beats_from_contextual_panel_interpretations(
         image_paths=[],
     )
 
+    data = _normalize_beat_summary_payload(data)
     return BeatSummary.model_validate(data)
 
 
@@ -493,6 +534,7 @@ def summarize_beats(
         image_paths=[],
     )
 
+    data = _normalize_beat_summary_payload(data)
     return BeatSummary.model_validate(data)
 
 
