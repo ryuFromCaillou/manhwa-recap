@@ -68,6 +68,61 @@ def _find_json_bounds(text: str) -> tuple[int, int] | None:
     return None
 
 
+def _try_repair_truncated_json_object(text: str) -> JsonObject | None:
+    """
+    Best-effort repair for model outputs that start a JSON object but are truncated.
+
+    Strategy:
+    - Find the first '{' and take the remainder.
+    - Track brace/bracket depth outside strings.
+    - Append any missing closing ']' / '}' in reverse-open order.
+    - Attempt json.loads; return None if it still fails.
+    """
+    start = text.find("{")
+    if start == -1:
+        return None
+
+    s = text[start:].strip()
+    depth_stack: list[str] = []
+    in_string = False
+    escape = False
+
+    for ch in s:
+        if in_string:
+            if escape:
+                escape = False
+            elif ch == "\\":
+                escape = True
+            elif ch == '"':
+                in_string = False
+            continue
+
+        if ch == '"':
+            in_string = True
+            continue
+
+        if ch == "{":
+            depth_stack.append("}")
+        elif ch == "[":
+            depth_stack.append("]")
+        elif ch == "}":
+            if depth_stack and depth_stack[-1] == "}":
+                depth_stack.pop()
+        elif ch == "]":
+            if depth_stack and depth_stack[-1] == "]":
+                depth_stack.pop()
+
+    if in_string:
+        # Do not try to auto-close a dangling string; it's too likely to corrupt meaning.
+        return None
+
+    repaired = s + "".join(reversed(depth_stack))
+    try:
+        return json.loads(repaired)
+    except Exception:
+        return None
+
+
 def _extract_json_object(text: str) -> JsonObject:
     """
     Extract the first JSON object found in `text`.
@@ -79,6 +134,9 @@ def _extract_json_object(text: str) -> JsonObject:
         s = s.strip("`")
     bounds = _find_json_bounds(s)
     if bounds is None:
+        repaired = _try_repair_truncated_json_object(s)
+        if repaired is not None:
+            return repaired
         raise ValueError("Model did not return a JSON object.")
     payload = s[bounds[0] : bounds[1]]
     return json.loads(payload)

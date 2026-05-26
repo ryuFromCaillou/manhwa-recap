@@ -13,7 +13,7 @@ Return JSON with:
 - panel_id
 - reading_order (integer)
 - visual_description (string)
-- dialogue_notes (JSON array of strings)
+- dialogue_notes (JSON array of strings; keep it short: max 8 items; if more, include the most important and add a final item like \"...(truncated)\")
 - action (string)
 - uncertainty_notes (JSON array of strings)
 - concise_summary (string)
