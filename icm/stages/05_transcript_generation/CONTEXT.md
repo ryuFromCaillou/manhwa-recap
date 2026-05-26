@@ -13,7 +13,7 @@ This stage is the current priority bottleneck.
 Read:
 
 - `_runs/<chapter_id>/04_beat_summary/beat_summary.json`
-- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panels.json`
+- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panel_interpretations.json`
 - `_references/recap_voice.md`
 - `_references/transcript_anti_patterns.md`
 - `_references/style_examples.md`
@@ -39,29 +39,14 @@ Expected artifacts:
 
 ```text
 transcript.json
-transcript.md
-generation_notes.md
+transcript.txt
 ```
 
 ## Output Contract
 
-`transcript.json` should include:
+`transcript.json` must match `_schemas/transcript.schema.json`.
 
-- `chapter_id`
-- `source_files`
-- `lines`
-
-Each line should include:
-
-- `line_id`
-- `beat_id`
-- `panel_ids`
-- `narration_line`
-- `source_fields`
-- `uncertainty_notes`
-- `status`
-
-`transcript.md` should be human-readable and preserve line IDs, beat IDs, and panel IDs.
+`transcript.txt` should be human-readable and preserve line IDs, beat IDs, and panel IDs.
 
 ## Source Priority
 
@@ -106,10 +91,10 @@ If the beat is uncertain, the line may still be written, but uncertainty must re
   "line_id": "line_001",
   "beat_id": "beat_001",
   "panel_ids": ["page_003_panel_001", "page_003_panel_002"],
-  "narration_line": "Toph turns the fireworks into a sound-based joke, and the sudden blast lands as the payoff.",
-  "source_fields": ["beat_001.recap_sentence", "page_003_panel_002.joke_or_dramatic_mechanism"],
-  "uncertainty_notes": [],
-  "status": "needs_review"
+  "speaker": "Recap Narrator",
+  "line_type": "recap",
+  "text": "Toph turns the fireworks into a sound-based joke, and the sudden blast lands as the payoff.",
+  "uncertainty_notes": []
 }
 ```
 
@@ -141,6 +126,6 @@ Before handoff, check:
 
 ## Handoff
 
-The review stage consumes `transcript.json`, `transcript.md`, and the source beat/contextual artifacts.
+The review stage consumes `transcript.json`, `transcript.txt`, and the source beat/contextual artifacts.
 
-If a line was difficult to write, explain why in `generation_notes.md`.
+If a line was difficult to write, capture the reason as `uncertainty_notes` on the relevant line(s) and/or in a small markdown note stored alongside the transcript.

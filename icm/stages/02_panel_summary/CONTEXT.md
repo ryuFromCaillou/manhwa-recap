@@ -10,8 +10,8 @@ Your job is to describe each individual panel as visible evidence. You are not y
 
 Read:
 
-- `_runs/<chapter_id>/01_panel_extraction/panel_manifest.json`
-- Cropped panel images referenced by the manifest
+- `_runs/<chapter_id>/01_panel_extraction/panels/manifest.json`
+- Cropped panel images referenced by `cropped_image_path` (under `_runs/<chapter_id>/01_panel_extraction/panels/`)
 - Optional OCR artifacts for each panel
 - `_schemas/panel_summary.schema.json`
 - Root `CLAUDE.md` and root `CONTEXT.md`
@@ -30,7 +30,8 @@ Expected artifacts:
 
 ```text
 panel_summaries.json
-panel_summary_review.md
+panel_ocr.json (optional)
+panel_summary_review.md (optional, human review)
 ```
 
 ## Output Contract
@@ -44,7 +45,6 @@ Each panel summary should include:
 - `action`
 - `uncertainty_notes`
 - `concise_summary`
-- `status`
 
 ## Work Rules
 

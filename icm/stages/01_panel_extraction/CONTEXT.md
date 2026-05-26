@@ -26,23 +26,22 @@ _runs/<chapter_id>/01_panel_extraction/
 Expected artifacts:
 
 ```text
-panel_manifest.json
-crop_review.md
-reading_order_review.md
+panels/manifest.json
+panels/*.png (cropped panels)
+panel_debug/*.png (optional, debug mode)
 ```
 
 ## Output Contract
 
-`panel_manifest.json` should contain one record per cropped panel with:
+`panels/manifest.json` must match `_schemas/panel_manifest.schema.json` and contain one record per cropped panel with:
 
 - `panel_id`
-- `page_id`
-- `reading_order`
 - `source_image_path`
 - `cropped_image_path`
-- `crop_box`, if available
-- `status`
-- `notes`
+- `page_index`
+- `panel_index`
+- `reading_order`
+- `bbox`
 
 ## Work Rules
 
@@ -75,6 +74,6 @@ Before handoff, check:
 
 ## Handoff
 
-The next stage consumes `panel_manifest.json` and cropped panel image paths.
+The next stage consumes `panels/manifest.json` and the cropped panel images referenced by `cropped_image_path`.
 
 If there are unresolved layout issues, summarize them at the top of `crop_review.md` so the panel summary stage knows which panels may be unreliable.

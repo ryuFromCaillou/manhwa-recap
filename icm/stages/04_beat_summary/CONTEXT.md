@@ -10,7 +10,7 @@ Your job is to group contextual panel interpretations into compact narrative bea
 
 Read:
 
-- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panels.json`
+- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panel_interpretations.json`
 - `_references/known_failure_modes.md`
 - `_schemas/beat_summary.schema.json`
 - Root `CLAUDE.md` and root `CONTEXT.md`
@@ -40,7 +40,6 @@ beat_review.md
 
 - `beats`
 - `leftover_panels`
-- `status`
 
 Each beat should include:
 

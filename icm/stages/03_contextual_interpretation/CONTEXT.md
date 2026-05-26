@@ -32,7 +32,7 @@ _runs/<chapter_id>/03_contextual_interpretation/
 Expected artifacts:
 
 ```text
-contextual_panels.json
+contextual_panel_interpretations.json
 contextual_review.md
 ```
 
@@ -51,7 +51,6 @@ Each contextual interpretation should include:
 - `adaptation_notes`
 - `uncertainty_notes`
 - `concise_contextual_summary`
-- `status`
 
 ## Work Rules
 
@@ -85,6 +84,6 @@ Before handoff, check:
 
 ## Handoff
 
-The next stage consumes `contextual_panels.json` and groups consecutive panels into beats.
+The next stage consumes `contextual_panel_interpretations.json` and groups consecutive panels into beats.
 
 Contextual panels should make beat grouping easier by stating each panel's story function clearly.

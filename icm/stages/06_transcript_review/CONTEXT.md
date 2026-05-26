@@ -11,9 +11,9 @@ Your job is to review generated transcript lines against beat summaries, context
 Read:
 
 - `_runs/<chapter_id>/05_transcript_generation/transcript.json`
-- `_runs/<chapter_id>/05_transcript_generation/transcript.md`
+- `_runs/<chapter_id>/05_transcript_generation/transcript.txt`
 - `_runs/<chapter_id>/04_beat_summary/beat_summary.json`
-- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panels.json`
+- `_runs/<chapter_id>/03_contextual_interpretation/contextual_panel_interpretations.json`
 - `_references/recap_voice.md`
 - `_references/transcript_anti_patterns.md`
 - `_references/known_failure_modes.md`
