@@ -1,0 +1,16 @@
+{
+  "panel_id": "page_001_panel_017",
+  "reading_order": 17,
+  "visual_description": "Five people stand on a wooden platform. One is an official wearing green robes, looking happy. Next to them is a small figure in green, head down and hands over face. I am in a blue dress, gesturing helpfully and speaking up. Sokka stands with arms crossed, looking slightly exasperated. Aang is in orange robes, looking disappointed. Another official in darker robes stands nearby. There is a bear at the far end.",
+  "dialogue_notes": [
+    "Wonderful! The Avatar's personal involvement will give the entire process an air of hope!",
+    "Sokka and I can help!",
+    "Aw, I was gonna visit Kyoshi Island."
+  ],
+  "action": "The group is discussing helping with an important process, and I am volunteering Sokka and myself.",
+  "uncertainty_notes": [
+    "Some characters' identities are assumed from appearance and context.",
+    "Purpose of the process is not specified."
+  ],
+  "concise_summary": "An official expresses hope about the Avatar's involvement. I excitedly volunteer Sokka and myself to help, while Aang looks disappointed about missing a trip to Kyoshi Island."
+}

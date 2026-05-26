@@ -1,0 +1,302 @@
+{
+  "title": "Chapter 001",
+  "lines": [
+    {
+      "line_id": "recap_01",
+      "beat_id": "beat_01_inciting_event_and_narrative_setup",
+      "panel_ids": [
+        "page_001_panel_002"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "After a century without the Avatar, Katara and Sokka discover a figure encased in ice, marking the end of the long wait.",
+      "visual_anchor": "Katara and Sokka on the ice, glowing sphere in background",
+      "beat_function": "payoff",
+      "pacing": "moderate",
+      "uncertainty_notes": [
+        "Figure in ice is presumed Aang; not fully confirmed visually."
+      ]
+    },
+    {
+      "line_id": "recap_02",
+      "beat_id": "beat_01_inciting_event_and_narrative_setup",
+      "panel_ids": [
+        "page_001_panel_003"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "The narration flashes back to Aang’s early training, anchoring Katara’s belief that he is destined to save the world.",
+      "visual_anchor": "Young Aang shown in airbending flashback",
+      "beat_function": "reveal",
+      "pacing": "regular",
+      "uncertainty_notes": [
+        "Narration is inferred to be Katara's."
+      ]
+    },
+    {
+      "line_id": "recap_03",
+      "beat_id": "beat_01_inciting_event_and_narrative_setup",
+      "panel_ids": [
+        "page_001_panel_004"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "The payoff lands: Katara’s faith in Aang’s potential is affirmed with conviction.",
+      "visual_anchor": "Bold text 'I WAS RIGHT.' on white background",
+      "beat_function": "payoff",
+      "pacing": "deliberate",
+      "uncertainty_notes": [
+        "No visuals of speaker, assertion based on narration arc."
+      ]
+    },
+    {
+      "line_id": "recap_04",
+      "beat_id": "beat_02_climax_recap_and_postwar_transition",
+      "panel_ids": [
+        "page_001_panel_005"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "A tense scene shows the aftermath of battle—a body collapsed, another stands in the haze—marking transition from hope to hard-won outcome.",
+      "visual_anchor": "Figure standing and another lying on smoky ground",
+      "beat_function": "transition",
+      "pacing": "slow",
+      "uncertainty_notes": [
+        "Identities are visually ambiguous."
+      ]
+    },
+    {
+      "line_id": "recap_05",
+      "beat_id": "beat_02_climax_recap_and_postwar_transition",
+      "panel_ids": [
+        "page_001_panel_006"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Narration confirms Aang has defeated Fire Lord Ozai, ending the war with his friends’ help.",
+      "visual_anchor": "Text narration box",
+      "beat_function": "payoff",
+      "pacing": "steady",
+      "uncertainty_notes": [
+        "No characters shown, only narration."
+      ]
+    },
+    {
+      "line_id": "recap_06",
+      "beat_id": "beat_02_climax_recap_and_postwar_transition",
+      "panel_ids": [
+        "page_001_panel_007"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Zuko is named the new Fire Lord, inheriting the throne from his father.",
+      "visual_anchor": "Narration box about Zuko's succession",
+      "beat_function": "reveal",
+      "pacing": "regular",
+      "uncertainty_notes": [
+        "No visual confirmation of Zuko, only stated in narration."
+      ]
+    },
+    {
+      "line_id": "recap_07",
+      "beat_id": "beat_02_climax_recap_and_postwar_transition",
+      "panel_ids": [
+        "page_001_panel_008"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "A visual of Zuko on the palace balcony before a crowd cements his new status as Fire Lord.",
+      "visual_anchor": "Zuko’s silhouette overlooking the crowd",
+      "beat_function": "reveal",
+      "pacing": "measured",
+      "uncertainty_notes": [
+        "Identification reliant on context/topknot visual."
+      ]
+    },
+    {
+      "line_id": "recap_08",
+      "beat_id": "beat_03_peace_promise_and_emergence_of_new_conflict",
+      "panel_ids": [
+        "page_001_panel_009"
+      ],
+      "speaker": "narrator",
+      "line_type": "transition",
+      "text": "A brief transitional moment bridges the celebration of new leadership to the promise of peace ahead.",
+      "visual_anchor": "Empty background with narration boxes",
+      "beat_function": "transition",
+      "pacing": "brief",
+      "uncertainty_notes": [
+        "Text unreadable; summary inferred."
+      ]
+    },
+    {
+      "line_id": "recap_09",
+      "beat_id": "beat_03_peace_promise_and_emergence_of_new_conflict",
+      "panel_ids": [
+        "page_001_panel_010"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Narration recounts the promise between Aang, Zuko, and Earth King Kuei to restore harmony across the Four Nations.",
+      "visual_anchor": "Text narration box",
+      "beat_function": "payoff",
+      "pacing": "regular",
+      "uncertainty_notes": [
+        "No visuals of characters present."
+      ]
+    },
+    {
+      "line_id": "recap_10",
+      "beat_id": "beat_03_peace_promise_and_emergence_of_new_conflict",
+      "panel_ids": [
+        "page_001_panel_011"
+      ],
+      "speaker": "Aang",
+      "line_type": "recap",
+      "text": "Aang examines a map, realizes the Earth Kingdom is filled with Fire Nation colonies, and confirms this with a brief exchange.",
+      "visual_anchor": "Aang’s hand with blue arrow tattoo on the map; two speech bubbles",
+      "beat_function": "reveal",
+      "pacing": "moderate",
+      "uncertainty_notes": [
+        "Identity of second speaker uncertain."
+      ]
+    },
+    {
+      "line_id": "recap_11",
+      "beat_id": "beat_03_peace_promise_and_emergence_of_new_conflict",
+      "panel_ids": [
+        "page_001_panel_012"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "The group reflects on the colonies as lingering scars of war, shifting the mood from triumph to the challenges of lasting peace.",
+      "visual_anchor": "Gathered group at table, map visible",
+      "beat_function": "reaction",
+      "pacing": "measured",
+      "uncertainty_notes": [
+        "Speaker attribution within group is unclear."
+      ]
+    },
+    {
+      "line_id": "recap_12",
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_013"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "An Earth Kingdom official, realizing Zuko is present, nervously assures the Fire Lord that the critique wasn’t meant personally.",
+      "visual_anchor": "Official in green robes, anxious",
+      "beat_function": "reaction",
+      "pacing": "brisk",
+      "uncertainty_notes": [
+        "Official’s identity not confirmed."
+      ]
+    },
+    {
+      "line_id": "recap_13",
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_014"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Zuko publicly accepts responsibility for the colonial legacy and pledges to repair the damage.",
+      "visual_anchor": "Zuko close-up, serious expression",
+      "beat_function": "payoff",
+      "pacing": "steady",
+      "uncertainty_notes": [
+        "Earth King Kuei presence inferred, not pictured."
+      ]
+    },
+    {
+      "line_id": "recap_14",
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_015"
+      ],
+      "speaker": "Aang",
+      "line_type": "recap",
+      "text": "Aang points out the difficult transition ahead and volunteers to oversee a peaceful process, as chaos briefly breaks out in the background.",
+      "visual_anchor": "Aang foreground, water splash behind",
+      "beat_function": "reaction",
+      "pacing": "regular",
+      "uncertainty_notes": [
+        "Who is splashed and which animal caused it are unclear."
+      ]
+    },
+    {
+      "line_id": "recap_15",
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_016"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "A bear-like figure expresses surprise at Aang’s initiative, but Aang cheerfully insists peaceful conflict resolution is what he does as the Avatar.",
+      "visual_anchor": "Aang beaming, bear-like figure in foreground",
+      "beat_function": "reaction",
+      "pacing": "brisk",
+      "uncertainty_notes": [
+        "Bear's identity not confirmed; likely Earth King Kuei."
+      ]
+    },
+    {
+      "line_id": "recap_16",
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_017"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Amid enthusiastic support from an official, Katara volunteers herself and Sokka to help, prompting Sokka’s exasperation and Aang’s disappointment about changing plans.",
+      "visual_anchor": "Katara gesturing, Sokka arms crossed, Aang downtrodden",
+      "beat_function": "payoff",
+      "pacing": "regular",
+      "uncertainty_notes": [
+        "Identity of small figure and bear not confirmed."
+      ]
+    },
+    {
+      "line_id": "recap_17",
+      "beat_id": "beat_05_harmony_restoration_movement_initiative",
+      "panel_ids": [
+        "page_001_panel_018"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "The group solidifies their mission’s hopefulness by naming it ‘The Harmony Restoration Movement’ with rising enthusiasm.",
+      "visual_anchor": "Official thinking, young companion excitedly interrupting",
+      "beat_function": "payoff",
+      "pacing": "brisk",
+      "uncertainty_notes": [
+        "Energetic shouter is likely Katara but not visually confirmed."
+      ]
+    },
+    {
+      "line_id": "recap_18",
+      "beat_id": "beat_05_harmony_restoration_movement_initiative",
+      "panel_ids": [
+        "page_001_panel_019"
+      ],
+      "speaker": "narrator",
+      "line_type": "recap",
+      "text": "Cheers erupt as the new movement’s name is shouted in affirmation, launching the team into unified collective action.",
+      "visual_anchor": "Bold-off-panel text, exclamation",
+      "beat_function": "payoff",
+      "pacing": "punchy",
+      "uncertainty_notes": [
+        "Speaker unseen, but contextually from group."
+      ]
+    }
+  ],
+  "unresolved_or_uncertain": [
+    "Identity of figure in the ice in panel 002 is inferred, not visually confirmed.",
+    "Speaker of affirmation in panel 011 is not identified.",
+    "Panel 005's characters are ambiguous.",
+    "Bear-like figure in 016 and 017 is likely Earth King's bear but not fully confirmed.",
+    "Smaller figures (such as the one in green in 017) and a few background characters remain unnamed.",
+    "Speaker for the enthusiastic shout in 019 is unseen but contextually clear.",
+    "Transcript appears dialogue-heavy (8/18 lines)."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "panel_id": "page_001_panel_001",
+  "reading_order": 1,
+  "visual_description": "A sequence of four dynamic silhouettes, each performing martial arts moves and bending a different element: water, earth, fire, and air. Each element is paired with its corresponding symbol behind the figure. The next panels transition to peaceful scenery, Fire Nation soldiers attacking, and a silhouette standing against a sunset. Dialogue boxes narrate events from the past.",
+  "dialogue_notes": [
+    "WATER.",
+    "EARTH.",
+    "FIRE.",
+    "AIR.",
+    "Long ago, the four nations lived together in harmony.",
+    "Then everything changed when the Fire Nation attacked.",
+    "Only the Avatar, master of all

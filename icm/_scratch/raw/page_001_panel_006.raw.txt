@@ -1,0 +1,15 @@
+{
+  "panel_id": "page_001_panel_006",
+  "reading_order": 6,
+  "visual_description": "A white rectangular narration box with black text. No characters or scenery are visible.",
+  "dialogue_notes": [
+    "WITH THE HELP OF HIS FRIENDS, AANG DEFEATED FIRE LORD OZAI AND ENDED THE HUNDRED YEARS' WAR."
+  ],
+  "action": "Narration summarizes Aang's victory over Fire Lord Ozai with his friends.",
+  "uncertainty_notes": [
+    "No visual depiction of characters or events.",
+    "Unclear which friends are present.",
+    "No visual cues for emotional tone."
+  ],
+  "concise_summary": "I narrate how Aang, together with his friends, defeated Fire Lord Ozai and ended the long war."
+}

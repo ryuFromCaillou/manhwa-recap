@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_007",
+  "reading_order": 7,
+  "visual_description": "A rectangular narration box with bolded black text on a white background. No characters or scenery are present.",
+  "dialogue_notes": [
+    "Zuko, Ozai's son and our ally, became the new Fire Lord."
+  ],
+  "action": "Narration informs us that Zuko has become the new Fire Lord.",
+  "uncertainty_notes": [
+    "No visual depiction of Zuko or other characters.",
+    "No context for surrounding events."
+  ],
+  "concise_summary": "I explain that Zuko, the son of Ozai and our ally, has become the new Fire Lord."
+}

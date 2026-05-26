@@ -1,0 +1,15 @@
+{
+  "panel_id": "page_001_panel_011",
+  "reading_order": 11,
+  "visual_description": "A hand with a blue arrow tattoo points at specific locations on a colorful map depicting the Earth Kingdom and Fire Nation colonies marked with red fire symbols. Two speech bubbles are present.",
+  "dialogue_notes": [
+    "I never realized the Fire Nation had built so many colonies in the Earth Kingdom.",
+    "Yes."
+  ],
+  "action": "I am studying a map and discussing the Fire Nation colonies with someone.",
+  "uncertainty_notes": [
+    "It is not entirely clear whose hand is pointing, but the blue arrow suggests it is Aang.",
+    "The identity of the other speaker is not explicitly shown."
+  ],
+  "concise_summary": "I observe a map revealing the extensive presence of Fire Nation colonies in the Earth Kingdom and discuss this realization with another person."
+}

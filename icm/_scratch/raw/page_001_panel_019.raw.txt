@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_019",
+  "reading_order": 19,
+  "visual_description": "At the top of the panel, a speech bubble with bold text rises from a greenish background. No characters are visible.",
+  "dialogue_notes": [
+    "YES! THE HARMONY RESTORATION MOVEMENT!"
+  ],
+  "action": "Someone is emphatically announcing or responding about the Harmony Restoration Movement.",
+  "uncertainty_notes": [
+    "The speaker is not visible.",
+    "The exact setting and other visual details are unclear."
+  ],
+  "concise_summary": "Someone, likely responding excitedly, declares support for the Harmony Restoration Movement."
+}

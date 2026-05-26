@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_015",
+  "reading_order": 15,
+  "visual_description": "Aang stands in the foreground, looking cheerful and confident, pointing to himself. He wears Air Nomad robes and a necklace with an air symbol. In the background, a person in green and yellow is dramatically splashed in the face with water from a flying animal.",
+  "dialogue_notes": [
+    "BUT REMOVING THE COLONIES WON'T BE EASY. A LOT OF PEOPLE'S LIVES ARE GONNA BE DISRUPTED.",
+    "WE NEED SOMEONE TO OVERSEE EVERYTHING, TO MAKE SURE IT ALL GOES PEACEFULLY. SOMEONE LIKE ME!"
+  ],
+  "action": "Aang explains the challenges of removing the colonies and volunteers to oversee a peaceful transition, while chaos unfolds in the background.",
+  "uncertainty_notes": [
+    "The identity of the background characters and the animal is not explicitly stated."
+  ],
+  "concise_summary": "Aang talks about the difficulties of removing the colonies and says he should oversee the transition, as someone is surprised by being splashed with water in the background."
+}

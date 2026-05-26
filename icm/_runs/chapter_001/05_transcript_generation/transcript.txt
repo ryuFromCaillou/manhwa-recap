@@ -1,0 +1,138 @@
+Title: Chapter 001
+
+Transcript:
+
+[recap_01] [beat_01_inciting_event_and_narrative_setup] [page_001_panel_002] narrator (recap):
+After a century without the Avatar, Katara and Sokka discover a figure encased in ice, marking the end of the long wait.
+Visual anchor: Katara and Sokka on the ice, glowing sphere in background
+Beat function: payoff
+Uncertainty:
+- Figure in ice is presumed Aang; not fully confirmed visually.
+
+[recap_02] [beat_01_inciting_event_and_narrative_setup] [page_001_panel_003] narrator (recap):
+The narration flashes back to Aang’s early training, anchoring Katara’s belief that he is destined to save the world.
+Visual anchor: Young Aang shown in airbending flashback
+Beat function: reveal
+Uncertainty:
+- Narration is inferred to be Katara's.
+
+[recap_03] [beat_01_inciting_event_and_narrative_setup] [page_001_panel_004] narrator (recap):
+The payoff lands: Katara’s faith in Aang’s potential is affirmed with conviction.
+Visual anchor: Bold text 'I WAS RIGHT.' on white background
+Beat function: payoff
+Uncertainty:
+- No visuals of speaker, assertion based on narration arc.
+
+[recap_04] [beat_02_climax_recap_and_postwar_transition] [page_001_panel_005] narrator (recap):
+A tense scene shows the aftermath of battle—a body collapsed, another stands in the haze—marking transition from hope to hard-won outcome.
+Visual anchor: Figure standing and another lying on smoky ground
+Beat function: transition
+Uncertainty:
+- Identities are visually ambiguous.
+
+[recap_05] [beat_02_climax_recap_and_postwar_transition] [page_001_panel_006] narrator (recap):
+Narration confirms Aang has defeated Fire Lord Ozai, ending the war with his friends’ help.
+Visual anchor: Text narration box
+Beat function: payoff
+Uncertainty:
+- No characters shown, only narration.
+
+[recap_06] [beat_02_climax_recap_and_postwar_transition] [page_001_panel_007] narrator (recap):
+Zuko is named the new Fire Lord, inheriting the throne from his father.
+Visual anchor: Narration box about Zuko's succession
+Beat function: reveal
+Uncertainty:
+- No visual confirmation of Zuko, only stated in narration.
+
+[recap_07] [beat_02_climax_recap_and_postwar_transition] [page_001_panel_008] narrator (recap):
+A visual of Zuko on the palace balcony before a crowd cements his new status as Fire Lord.
+Visual anchor: Zuko’s silhouette overlooking the crowd
+Beat function: reveal
+Uncertainty:
+- Identification reliant on context/topknot visual.
+
+[recap_08] [beat_03_peace_promise_and_emergence_of_new_conflict] [page_001_panel_009] narrator (transition):
+A brief transitional moment bridges the celebration of new leadership to the promise of peace ahead.
+Visual anchor: Empty background with narration boxes
+Beat function: transition
+Uncertainty:
+- Text unreadable; summary inferred.
+
+[recap_09] [beat_03_peace_promise_and_emergence_of_new_conflict] [page_001_panel_010] narrator (recap):
+Narration recounts the promise between Aang, Zuko, and Earth King Kuei to restore harmony across the Four Nations.
+Visual anchor: Text narration box
+Beat function: payoff
+Uncertainty:
+- No visuals of characters present.
+
+[recap_10] [beat_03_peace_promise_and_emergence_of_new_conflict] [page_001_panel_011] Aang (recap):
+Aang examines a map, realizes the Earth Kingdom is filled with Fire Nation colonies, and confirms this with a brief exchange.
+Visual anchor: Aang’s hand with blue arrow tattoo on the map; two speech bubbles
+Beat function: reveal
+Uncertainty:
+- Identity of second speaker uncertain.
+
+[recap_11] [beat_03_peace_promise_and_emergence_of_new_conflict] [page_001_panel_012] narrator (recap):
+The group reflects on the colonies as lingering scars of war, shifting the mood from triumph to the challenges of lasting peace.
+Visual anchor: Gathered group at table, map visible
+Beat function: reaction
+Uncertainty:
+- Speaker attribution within group is unclear.
+
+[recap_12] [beat_04_tension_group_dynamics_and_responsibility] [page_001_panel_013] narrator (recap):
+An Earth Kingdom official, realizing Zuko is present, nervously assures the Fire Lord that the critique wasn’t meant personally.
+Visual anchor: Official in green robes, anxious
+Beat function: reaction
+Uncertainty:
+- Official’s identity not confirmed.
+
+[recap_13] [beat_04_tension_group_dynamics_and_responsibility] [page_001_panel_014] narrator (recap):
+Zuko publicly accepts responsibility for the colonial legacy and pledges to repair the damage.
+Visual anchor: Zuko close-up, serious expression
+Beat function: payoff
+Uncertainty:
+- Earth King Kuei presence inferred, not pictured.
+
+[recap_14] [beat_04_tension_group_dynamics_and_responsibility] [page_001_panel_015] Aang (recap):
+Aang points out the difficult transition ahead and volunteers to oversee a peaceful process, as chaos briefly breaks out in the background.
+Visual anchor: Aang foreground, water splash behind
+Beat function: reaction
+Uncertainty:
+- Who is splashed and which animal caused it are unclear.
+
+[recap_15] [beat_04_tension_group_dynamics_and_responsibility] [page_001_panel_016] narrator (recap):
+A bear-like figure expresses surprise at Aang’s initiative, but Aang cheerfully insists peaceful conflict resolution is what he does as the Avatar.
+Visual anchor: Aang beaming, bear-like figure in foreground
+Beat function: reaction
+Uncertainty:
+- Bear's identity not confirmed; likely Earth King Kuei.
+
+[recap_16] [beat_04_tension_group_dynamics_and_responsibility] [page_001_panel_017] narrator (recap):
+Amid enthusiastic support from an official, Katara volunteers herself and Sokka to help, prompting Sokka’s exasperation and Aang’s disappointment about changing plans.
+Visual anchor: Katara gesturing, Sokka arms crossed, Aang downtrodden
+Beat function: payoff
+Uncertainty:
+- Identity of small figure and bear not confirmed.
+
+[recap_17] [beat_05_harmony_restoration_movement_initiative] [page_001_panel_018] narrator (recap):
+The group solidifies their mission’s hopefulness by naming it ‘The Harmony Restoration Movement’ with rising enthusiasm.
+Visual anchor: Official thinking, young companion excitedly interrupting
+Beat function: payoff
+Uncertainty:
+- Energetic shouter is likely Katara but not visually confirmed.
+
+[recap_18] [beat_05_harmony_restoration_movement_initiative] [page_001_panel_019] narrator (recap):
+Cheers erupt as the new movement’s name is shouted in affirmation, launching the team into unified collective action.
+Visual anchor: Bold-off-panel text, exclamation
+Beat function: payoff
+Uncertainty:
+- Speaker unseen, but contextually from group.
+
+Unresolved or uncertain:
+- Identity of figure in the ice in panel 002 is inferred, not visually confirmed.
+- Speaker of affirmation in panel 011 is not identified.
+- Panel 005's characters are ambiguous.
+- Bear-like figure in 016 and 017 is likely Earth King's bear but not fully confirmed.
+- Smaller figures (such as the one in green in 017) and a few background characters remain unnamed.
+- Speaker for the enthusiastic shout in 019 is unseen but contextually clear.
+- Transcript appears dialogue-heavy (8/18 lines).

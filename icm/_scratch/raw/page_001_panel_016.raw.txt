@@ -1,0 +1,15 @@
+{
+  "panel_id": "page_001_panel_016",
+  "reading_order": 16,
+  "visual_description": "At the bottom of a staircase, a large bear-like figure in a yellow outfit is facing two people and a creature near the top of the stairs. One person is dressed in a regal red robe and has their hair in a topknot, while the other is dressed in orange and tan clothes, smiling. The small creature has long ears and a green hat.",
+  "dialogue_notes": [
+    "Really? You'd want to do that?",
+    "Yeah, I'm the Avatar! Making stuff go peacefully is kind of my thing!"
+  ],
+  "action": "The bear-like figure engages the people on the stairs in conversation. The person in orange responds confidently.",
+  "uncertainty_notes": [
+    "The identity of the bear-like figure is uncertain.",
+    "The identity of the small creature is uncertain."
+  ],
+  "concise_summary": "A conversation takes place on a staircase; one figure is surprised, while the Avatar cheerfully confirms their aim to resolve things peacefully."
+}

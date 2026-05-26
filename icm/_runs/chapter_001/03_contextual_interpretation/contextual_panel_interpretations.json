@@ -1,0 +1,999 @@
+[
+  {
+    "panel_id": "page_001_panel_002",
+    "reading_order": 2,
+    "resolved_characters": [
+      {
+        "name": "Katara",
+        "visual_label": "Figure in blue, fur-lined clothes, standing next to Sokka",
+        "confidence": "high",
+        "evidence": [
+          "Dialogue notes refer to narrator as Katara; context places Katara at the scene."
+        ]
+      },
+      {
+        "name": "Sokka",
+        "visual_label": "Figure in blue, fur-lined clothes, standing with Katara",
+        "confidence": "high",
+        "evidence": [
+          "Dialogue identifies 'my brother Sokka,' implying both siblings present."
+        ]
+      },
+      {
+        "name": "Aang",
+        "visual_label": "Silhouette inside glowing sphere/iceberg",
+        "confidence": "medium",
+        "evidence": [
+          "Dialogue says 'discovered the new Avatar, an airbender named Aang'; figure in sphere assumed to be Aang, but not confirmed by visuals."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "{\"panel_id\": \"page_001_panel_001\", \"type\": \"narration continuity\", \"evidence\": \"Previous narration sets up that a hundred years have passed; this panel concludes that setup with the discovery of Aang.\"}"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_001"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_002"
+      ],
+      "setup": "Establishes a time jump of a hundred years and describes a search or wait for the new Avatar.",
+      "payoff": "Katara and Sokka discover Aang, frozen in ice, resolving the setup narration.",
+      "mechanism": "Narration bridges the passage of time and directly connects the discovery of the Avatar to the previously established absence.",
+      "effect": "Delivers the pivotal moment of finding the Avatar, an inciting event in the story."
+    },
+    "joke_or_dramatic_mechanism": "Dramatic reveal/payoff: The suspense and mystery of a missing Avatar culminates in the visual of Aang encased in ice.",
+    "corrected_story_function": "Inciting incident—Katara and Sokka discovering Aang after a long absence, marking a key turning point and narrative transition.",
+    "adaptation_notes": [
+      "Use voiceover narration to carry Katara's lines and emphasize the passage of a hundred years.",
+      "Visually highlight the glow and focus on the sphere/iceberg, suggesting its importance.",
+      "Dramatic music should swell as the camera reveals Aang to underscore the significance.",
+      "Show Katara and Sokka's physical reactions (awe/surprise) for emotional weight.",
+      "Consider a brief montage or visual dissolve from the previous panel to imply the passage of time."
+    ],
+    "uncertainty_notes": [
+      "Figure in the ice is almost certainly Aang, but not named on-screen or visually confirmed in this panel alone.",
+      "Assumed identities of Katara and Sokka are based on context and dialogue, not distinctive visual labels in this single panel."
+    ],
+    "concise_contextual_summary": "After a stated passage of a hundred years, Katara and Sokka stand on the ice and discover the Avatar, Aang, in a glowing, frozen sphere—marking the story's inciting event."
+  },
+  {
+    "panel_id": "page_001_panel_003",
+    "reading_order": 3,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "young monk in orange/yellow robes",
+        "confidence": "high",
+        "evidence": [
+          "Distinctive attire and prior narration link this to the previously discovered 'airbender named Aang'."
+        ]
+      },
+      {
+        "name": "Katara (narrator)",
+        "visual_label": "narration only (not pictured)",
+        "confidence": "moderate",
+        "evidence": [
+          "Narration continuity and pronoun reference ('my brother Sokka and I') from previous panel, although not visually depicted."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_002"
+    ],
+    "panel_role": "reveal",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_002"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_003"
+      ],
+      "setup": "Aang is identified as the new Avatar, discovered by Katara and Sokka after being trapped in ice for a hundred years.",
+      "payoff": "Katara’s narration shifts to Aang’s past, demonstrating his early airbending training and her enduring belief in his destiny.",
+      "mechanism": "The reveal sequence shifts from discovery (ice sphere) to flashback/training (Aang’s earlier life), reinforcing Katara’s faith in him and foreshadowing his growth.",
+      "effect": "Bridges the immediate discovery of Aang to a broader context of his abilities and the central hope Katara places in him."
+    },
+    "joke_or_dramatic_mechanism": "Flashback shows Aang's inexperience despite being the Avatar, paired with Katara’s retrospective, heartfelt narration—a mix of light slapstick and dramatic foreshadowing.",
+    "corrected_story_function": "Reveals Aang’s airbending inexperience through action and juxtaposes it with the narrator’s steady faith in his potential, transitioning from discovery to character insight and dramatic setup.",
+    "adaptation_notes": [
+      "Voice-over narration should shift from past tense discovery to reflective admiration and hope.",
+      "Sound design: Audibly emphasize Aang’s 'Oof!' and the comedic impact of him being knocked back.",
+      "Visual pacing: Transition from kinetic knockback to calm, wide establishing shot for contemplative mood.",
+      "Narrator’s emotional tone should transition from descriptive to quietly inspirational."
+    ],
+    "uncertainty_notes": [
+      "Flashback location is not specified.",
+      "Narrator is inferred to be Katara based on previous dialogue context."
+    ],
+    "concise_contextual_summary": "Continuation from Aang’s discovery shifts to Katara’s narration about his past training and her belief in his destiny, using a flashback and visual juxtaposition to build both character insight and dramatic anticipation."
+  },
+  {
+    "panel_id": "page_001_panel_004",
+    "reading_order": 4,
+    "resolved_characters": [
+      {
+        "name": "Katara",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "The previous panels are narrated in first person by Katara. The continuity of narration is unbroken, and the line 'I WAS RIGHT.' follows directly after Katara’s reflections about Aang's destiny."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_002",
+      "page_001_panel_003"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_003"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_004"
+      ],
+      "setup": "Katara narrates her belief that Aang would save the world from the moment she met him.",
+      "payoff": "The bold declaration 'I WAS RIGHT.' confirms her belief was justified.",
+      "mechanism": "Emotional and narrative reinforcement: the assertion in the previous panel is validated with emphatic, isolated text.",
+      "effect": "Creates a strong, conclusive transition from hope/faith to certainty, affirming Katara’s perspective."
+    },
+    "joke_or_dramatic_mechanism": "Emphatic narrative affirmation; textual punchline to a dramatic setup.",
+    "corrected_story_function": "Serves as a narrator's emphatic confirmation that her earlier faith in Aang was justified, acting as both payoff to the established narrative arc and a dramatic, memorable transition.",
+    "adaptation_notes": [
+      "Pace this as a beat of silence or a break in music to let the bold text land.",
+      "Consider overlaying the bold 'I WAS RIGHT.' text on a white screen, accompanied by a brief sound of narrative resolution (e.g., a musical swell or a gentle chime).",
+      "No voiced dialogue needed except for the narration; if narrated, deliver the line with strong conviction.",
+      "This is the payoff to Katara’s earlier narration—ensure it comes across with emotional weight."
+    ],
+    "uncertainty_notes": [
+      "No characters are shown visually; character attribution is based solely on preceding narration.",
+      "If adapting visually, there is a risk of abruptness; ensure clear continuity from Katara’s narration."
+    ],
+    "concise_contextual_summary": "Katara, after recounting her hopeful belief in Aang's destiny, declares she was correct, closing her narration arc with a bold affirmation."
+  },
+  {
+    "panel_id": "page_001_panel_005",
+    "reading_order": 5,
+    "resolved_characters": [
+      {
+        "name": "Uncertain (possible main cast: Aang, Sokka, Katara)",
+        "visual_label": "Person lying on ground",
+        "confidence": "low",
+        "evidence": [
+          "No explicit visual or dialogue cues; previous context involved Aang, Sokka, Katara."
+        ]
+      },
+      {
+        "name": "Uncertain (possible main cast or antagonist)",
+        "visual_label": "Person standing",
+        "confidence": "low",
+        "evidence": [
+          "No clear identification; standing posture suggests victor or observer after a confrontation."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_004",
+      "page_001_panel_003"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_003",
+        "page_001_panel_004"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_005"
+      ],
+      "setup": "Panel 3 and 4 establish confidence in Aang's ability to save the world, culminating in the emphatic statement 'I WAS RIGHT.'",
+      "payoff": "Panel 5 visually depicts a confrontation's aftermath, suggesting either vindication of that belief or the cost of such a conflict.",
+      "mechanism": "The narration builds to a moment of certainty and then immediately cuts to a dramatic, ambiguous outcome where someone has seemingly fallen—potentially raising tension over the narrator's certainty.",
+      "effect": "Heightens drama by juxtaposing confidence in victory ('I WAS RIGHT') with an image that could signal triumph or sacrifice, prompting viewers to question whose victory or loss is being shown."
+    },
+    "joke_or_dramatic_mechanism": "Dramatic irony: The narrator's certainty is immediately challenged or made complex by a visually ambiguous, possibly somber scene.",
+    "corrected_story_function": "Provides dramatic contrast and either supports or questions the preceding confident narration, introducing tension or surprise with an unresolved aftermath image.",
+    "adaptation_notes": [
+      "Narration ('I WAS RIGHT.') should hang or echo into this panel before being replaced by tense silence or somber music.",
+      "Hold the shot long enough for viewers to process the ambiguity—don't rush to reveal identities.",
+      "Emphasize the red, smoky background with visual effects and sound design for impact.",
+      "Consider slight camera movement or heavy breathing sounds to suggest someone is alive but exhausted."
+    ],
+    "uncertainty_notes": [
+      "Character identities are not confirmed in this panel.",
+      "Without visual recognition or dialogue, their roles (victor, defeated) are only inferred.",
+      "Possible that the payoff is not literal but symbolic, or may feature unknown parties."
+    ],
+    "concise_contextual_summary": "Following confident narration of the hero's destined success, the scene cuts to an ambiguous battle aftermath, showing one person down and another standing amidst smoke—leaving the narrator's certainty in tension with the visual uncertainty."
+  },
+  {
+    "panel_id": "page_001_panel_006",
+    "reading_order": 6,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "not visually present, but referenced in narration",
+        "confidence": "high",
+        "evidence": [
+          "Named in narration as the protagonist who defeated Fire Lord Ozai."
+        ]
+      },
+      {
+        "name": "Fire Lord Ozai",
+        "visual_label": "not visually present, but referenced in narration",
+        "confidence": "high",
+        "evidence": [
+          "Named in narration as the defeated antagonist."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_003",
+      "page_001_panel_004",
+      "page_001_panel_005"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_003",
+        "page_001_panel_004"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_006"
+      ],
+      "setup": "The narrator expressed unwavering belief in Aang's destiny to save the world, culminating in a definitive assertion ('I WAS RIGHT.').",
+      "payoff": "A narration box confirms Aang's triumph over Fire Lord Ozai with his friends, thereby achieving the long-foreshadowed victory.",
+      "mechanism": "This is a direct confirmation and fulfillment of the narrator's faith and previous narration, transforming hope and belief into realized history.",
+      "effect": "Delivers narrative closure to the opening faith-in-Aang arc, underscoring the stakes and scope of his victory, and transitioning the story from past struggle to the aftermath."
+    },
+    "joke_or_dramatic_mechanism": "Dramatic payoff—fulfillment of established foreshadowing and narrator's confidence, moving from personal conviction to historical fact.",
+    "corrected_story_function": "Closes the prologue narration arc by confirming Aang's central victory, retroactively validating the narrator's belief and setting the post-war scene.",
+    "adaptation_notes": [
+      "Narration should be delivered with tonal finality and a sense of triumphant closure, contrasting with earlier uncertainty.",
+      "Visuals could dissolve from the stark narration box into slow, suggestive flashes or silhouettes of Aang and his friends for emotional resonance.",
+      "Music should swell to mark the moment as a historical turning point, then fade to underscore transition.",
+      "If using motion graphics, consider overlaying iconic imagery of the victory or a symbolic peace scene."
+    ],
+    "uncertainty_notes": [
+      "No characters or events visually depicted: all information is presented solely via narration.",
+      "The specific friends helping Aang are not identified; their presence is only implied by the text.",
+      "Emotional tone must be inferred from the context and narrative structure."
+    ],
+    "concise_contextual_summary": "This narration panel fulfills the earlier foreshadowing and narrator's faith in Aang by explicitly stating his victory and the end of the war, closing out the prologue."
+  },
+  {
+    "panel_id": "page_001_panel_007",
+    "reading_order": 7,
+    "resolved_characters": [
+      {
+        "name": "Zuko",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "Explicitly named in narration: 'Zuko, Ozai’s son and our ally, became the new Fire Lord.'"
+        ]
+      },
+      {
+        "name": "Ozai",
+        "visual_label": "",
+        "confidence": "medium",
+        "evidence": [
+          "Mentioned as Zuko’s father and previous Fire Lord; continuity from prior panel narration."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_004",
+      "page_001_panel_005",
+      "page_001_panel_006"
+    ],
+    "panel_role": "reveal",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_006"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_007"
+      ],
+      "setup": "Previous panel narrated the defeat of Fire Lord Ozai and the end of the Hundred Years' War.",
+      "payoff": "Current panel reveals who succeeded Ozai as Fire Lord—Zuko, providing narrative closure and a transition to the new status quo.",
+      "mechanism": "Resolution of the question left in the prior panel ('Who rules after Ozai?') directly answered by this narration.",
+      "effect": "Establishes Zuko's new role and significance, and clarifies the post-war political landscape."
+    },
+    "joke_or_dramatic_mechanism": "Dramatic reveal and resolution—identifying Zuko’s ascension as part of the aftermath, highlighting transformation and alliance.",
+    "corrected_story_function": "This panel delivers critical exposition, connecting the defeat of the main antagonist (Ozai) to the rise of a central ally (Zuko). It serves as a reveal, summarizing the power transition and setting the stage for the new political order after the war.",
+    "adaptation_notes": [
+      "Narration should shift tone from battle/struggle to hope and resolution.",
+      "Visually, a fade from imagery of conflict (if preceding) into a clear narration box gives a sense of finality and calm.",
+      "Emphasize Zuko’s role as both Ozai’s son and an ally, marking him as a bridge between old regime and new order.",
+      "Consider light musical lift to mark the hopeful transition."
+    ],
+    "uncertainty_notes": [
+      "No characters are visually present in this panel.",
+      "No cues about current emotional state or Zuko’s demeanor.",
+      "Unclear if the next panel will continue the narration or return to character-focused scenes."
+    ],
+    "concise_contextual_summary": "Narration reveals that Zuko, previously an ally and son of the defeated Ozai, has succeeded his father to become the new Fire Lord, closing the arc of conflict and setting up the new era."
+  },
+  {
+    "panel_id": "page_001_panel_008",
+    "reading_order": 8,
+    "resolved_characters": [
+      {
+        "name": "Zuko",
+        "visual_label": "figure with topknot overlooking crowd",
+        "confidence": "high",
+        "evidence": [
+          "Previous panel narration states 'Zuko, Ozai's son and our ally, became the new Fire Lord.' This panel visually shows a figure in a high position of authority (the palace platform) overlooking a crowd. The topknot is a signature visual cue for Fire Nation royalty, supporting the identification as Zuko."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_007"
+    ],
+    "panel_role": "reveal",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_007"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_008"
+      ],
+      "setup": "The narration informs the reader that Zuko has become the new Fire Lord.",
+      "payoff": "The visual in the current panel reveals Zuko (from behind) in a position of authority, literally fulfilling the prior narration and visually cementing his new status.",
+      "mechanism": "The narration sets up a change in leadership and status; the visual payoff confirms this with an atmospheric establishing shot.",
+      "effect": "The audience experiences a sense of narrative transition and closure, as authority visibly passes from Ozai to Zuko, anchoring the story's next chapter."
+    },
+    "joke_or_dramatic_mechanism": "",
+    "corrected_story_function": "This panel visually confirms Zuko's new role as Fire Lord as established in the prior narration, transitioning from summary to present-tense world-building and setting the scene for possible addressing of the people or important ceremonial actions.",
+    "adaptation_notes": [
+      "Use a wide panning or slow zoom establishing shot to reveal the palace, crowd, and Zuko's authoritative stance on the platform.",
+      "Accompany with solemn music or ambient crowd noise to emphasize the significance of the event.",
+      "Narration from prior panels can continue as voiceover to merge exposition with visual reveal.",
+      "Pause briefly before the next action to let the significance settle for viewers."
+    ],
+    "uncertainty_notes": [
+      "Although the identity of the central figure is not confirmed visually in this panel, the combination of prior narration, costume/topknot, and context makes it highly probable this is Zuko.",
+      "No dialogue or explicit ceremonial cues in this panel—assumptions about the event (such as coronation or public address) are inferred from visual context."
+    ],
+    "concise_contextual_summary": "After narration confirms Zuko's ascension as Fire Lord, the story presents him visually in his new role, presiding over an assembled crowd before the Fire Nation palace, signaling a major narrative transition."
+  },
+  {
+    "panel_id": "page_001_panel_009",
+    "reading_order": 9,
+    "resolved_characters": [],
+    "continuity_links": [
+      "page_001_panel_006",
+      "page_001_panel_007",
+      "page_001_panel_008"
+    ],
+    "panel_role": "transition",
+    "setup_payoff_relation": null,
+    "joke_or_dramatic_mechanism": "",
+    "corrected_story_function": "This panel serves as a narrative transition, likely advancing the story or providing reflective context following the depiction of Zuko ascending to power and a moment of potential ceremony or address in the previous panel.",
+    "adaptation_notes": [
+      "Since the text boxes’ content is unreadable, treat the panel as a pause or narrative bridge—hold a neutral or anticipatory tone.",
+      "Keep background music subdued; consider a fade or gentle swell in soundtrack to indicate narrative progression.",
+      "If producing narration, insert a moment of silence or placeholder, or transition voiceover to imply unseen narration.",
+      "Maintain continuity by referencing previous narration about the aftermath of the Hundred Years’ War, Zuko’s new role, and the assembled crowd."
+    ],
+    "uncertainty_notes": [
+      "The actual content of the text boxes is not legible, so narration specifics must be inferred or omitted.",
+      "No indicators of the narrator’s identity or internal monologue source.",
+      "This could be context, exposition, or a character’s thoughts—role is inferred as transition."
+    ],
+    "concise_contextual_summary": "Following the narration of Aang’s victory and Zuko’s rise to Fire Lord, this blank background panel with two indistinct narration boxes acts as an interstitial moment, likely providing additional narrative context or transition before moving into the next scene."
+  },
+  {
+    "panel_id": "page_001_panel_010",
+    "reading_order": 10,
+    "resolved_characters": [
+      {
+        "name": "Earth King Kuei",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "Explicitly named in narration."
+        ]
+      },
+      {
+        "name": "Aang",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "Explicitly named in narration."
+        ]
+      },
+      {
+        "name": "Zuko",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "Explicitly named in narration and referenced as Fire Lord in previous panel."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_007",
+      "page_001_panel_008"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_008",
+        "page_001_panel_009"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_010"
+      ],
+      "setup": "A powerful figure, likely Zuko or another leader, is shown before a crowd in an authoritative context; previous narration establishes Zuko's new leadership role.",
+      "payoff": "Narration clarifies that Zuko, alongside Earth King Kuei and Aang, has made a collective promise to restore harmony between the Four Nations.",
+      "mechanism": "The setup visually alludes to a significant diplomatic or political event, while the payoff panel provides narrative context that unifies key leaders in a shared goal.",
+      "effect": "Creates dramatic emphasis on unity and introduces the postwar goal, anchoring the political stakes and setting the tone for subsequent developments."
+    },
+    "joke_or_dramatic_mechanism": "Narrative escalation: The collective promise among former rivals/central figures dramatically shifts the story context from war to cooperative peacemaking.",
+    "corrected_story_function": "This panel serves as a narrative bridge, confirming the new alliance between major leaders and formally establishing their intent to seek harmony among the Four Nations; it clarifies and elevates the stakes implied by the previous scene.",
+    "adaptation_notes": [
+      "Narration should be delivered with gravitas, emphasizing the importance of unity and peace.",
+      "Consider using gentle swelling music to underscore hopefulness.",
+      "Visual montage or faded transitions between images of Zuko, Aang, and Earth King Kuei (if available) could be overlaid during narration for emotional impact.",
+      "No character animation is necessary; visual focus is on words and tone."
+    ],
+    "uncertainty_notes": [
+      "No characters are depicted visually; all identity references rely on narrated text.",
+      "Previous panel showed a generic authority figure but didn't definitively reveal identity."
+    ],
+    "concise_contextual_summary": "This narration panel clarifies that Zuko, Aang, and Earth King Kuei have pledged to restore harmony to the Four Nations, contextualizing the preceding visuals of leadership and assembly and indicating a formal unity after recent upheaval."
+  },
+  {
+    "panel_id": "page_001_panel_011",
+    "reading_order": 11,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "hand with blue arrow tattoo",
+        "confidence": "high",
+        "evidence": [
+          "Only Aang is known to have a blue arrow tattoo (as per Avatar universe conventions); previous narration highlighted Aang's involvement."
+        ]
+      },
+      {
+        "name": "uncertain (likely a companion or advisor)",
+        "visual_label": "off-panel speaker responding 'Yes.'",
+        "confidence": "low",
+        "evidence": [
+          "The other speech bubble's speaker is not visible and not previously introduced in these panels."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_008",
+      "page_001_panel_009",
+      "page_001_panel_010"
+    ],
+    "panel_role": "reveal",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_010"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_011"
+      ],
+      "setup": "Narration establishes a pact between major leaders—including Aang—to restore harmony, implying the presence of disharmony or problems to solve.",
+      "payoff": "Aang discovers on the map the extensive presence of Fire Nation colonies in the Earth Kingdom, visually and narratively identifying a key source of this discord.",
+      "mechanism": "The broad goal (restoring harmony) is immediately grounded with a concrete challenge (the colonial map), connecting the abstract promise to a tangible problem.",
+      "effect": "Heightens stakes and clarifies the central conflict moving forward; the promise moves from narration to personal realization and investigation."
+    },
+    "joke_or_dramatic_mechanism": "",
+    "corrected_story_function": "This panel visually and through dialogue reveals the scope of the Fire Nation’s colonial occupation in the Earth Kingdom, tying it directly to the stated goal of restoring harmony. This grounds the promise in the previous narration, setting up the main political tension or quest.",
+    "adaptation_notes": [
+      "Show detailed shot of map with Aang's hand and blue arrow tattoo clearly visible.",
+      "Dramatic pause or tone in narration as Aang speaks his realization; possible over-the-shoulder shot.",
+      "Second speaker’s line ('Yes.') should be delivered off-screen or with the camera lingering on the map to maintain focus on the scale of the challenge.",
+      "Consider zooming on the red fire symbols for visual emphasis on the colonies."
+    ],
+    "uncertainty_notes": [
+      "The identity of the second speaker is unclear; could be any companion, advisor, or leader present.",
+      "The hand is strongly inferred to be Aang's based on the blue arrow, but not directly confirmed on-panel."
+    ],
+    "concise_contextual_summary": "Aang examines a map revealing the widespread Fire Nation colonies throughout the Earth Kingdom, realizing the enormity of the situation—directly connecting this to the previous promise of restoring harmony made by him and the other leaders."
+  },
+  {
+    "panel_id": "page_001_panel_012",
+    "reading_order": 12,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "person in orange (Air Nomad robes), seen near map",
+        "confidence": "high",
+        "evidence": [
+          "Previous panel dialogue from Aang; airbender attire."
+        ]
+      },
+      {
+        "name": "Zuko",
+        "visual_label": "figure in a long maroon robe, near map",
+        "confidence": "high",
+        "evidence": [
+          "Dialogue/narration from previous panel mentions Zuko being present; maroon robe matches Fire Nation royal attire."
+        ]
+      },
+      {
+        "name": "Earth King Kuei",
+        "visual_label": "large person in green and yellow",
+        "confidence": "high",
+        "evidence": [
+          "Previously named as part of the group, green and yellow attire suggests Earth Kingdom royalty."
+        ]
+      },
+      {
+        "name": "Momo",
+        "visual_label": "white creature with long ears",
+        "confidence": "high",
+        "evidence": [
+          "Iconic flying lemur character in series; matches description."
+        ]
+      },
+      {
+        "name": null,
+        "visual_label": "other group members",
+        "confidence": "low",
+        "evidence": [
+          "Present in panel, but not individually identified in prior panels or by clear visual cues."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_009",
+      "page_001_panel_010",
+      "page_001_panel_011"
+    ],
+    "panel_role": "reaction",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_011"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_012"
+      ],
+      "setup": "Discovering and discussing the extent of Fire Nation colonies in the Earth Kingdom.",
+      "payoff": "Group reflects on the emotional and societal impact those colonies have had, described as an 'old scar' for the Earth people.",
+      "mechanism": "Emotional reaction: factual realization in previous panel, followed by introspective commentary and empathetic framing in this panel.",
+      "effect": "Deepens the thematic impact and invites the audience to empathize with the collective trauma left by the war."
+    },
+    "joke_or_dramatic_mechanism": "Reflection on past trauma—using the metaphor of an 'old scar' to connect the physical remnants of war to the emotional legacy it leaves behind.",
+    "corrected_story_function": "The panel transitions the group's factual discovery into an emotional reflection. It underlines the lasting, visible consequences of the Fire Nation's occupation for the Earth Kingdom's people, reinforcing the stakes and tension in the ongoing discussion.",
+    "adaptation_notes": [
+      "Narration should carry a tone of sober reflection, emphasizing the metaphor of the scar.",
+      "Visuals should linger on both the map (symbolizing the colonies) and facial reactions or body language of main characters.",
+      "Music can shift to a somber undertone to highlight emotional weight.",
+      "If Momo is animated, keep his motions subdued to match mood."
+    ],
+    "uncertainty_notes": [
+      "Not all group members can be specifically identified from this panel alone.",
+      "Speaker of the line isn’t clearly indicated—could be Aang or Zuko, based on prior context and presence near map."
+    ],
+    "concise_contextual_summary": "After realizing the extent of Fire Nation colonies in the Earth Kingdom, the group’s attention turns to the emotional scars left on the Earth people by the war—conveyed with the metaphor of an 'old scar' as they stand in a grand, official setting."
+  },
+  {
+    "panel_id": "page_001_panel_013",
+    "reading_order": 13,
+    "resolved_characters": [
+      {
+        "name": "Fire Lord Zuko",
+        "visual_label": "",
+        "confidence": "high",
+        "evidence": [
+          "Addressed directly by title in dialogue: 'Fire Lord Zuko'."
+        ]
+      },
+      {
+        "name": "Earth Kingdom official (exact identity unknown)",
+        "visual_label": "elaborate green robes, glasses, necklace",
+        "confidence": "moderate",
+        "evidence": [
+          "Green official robes, formal hat, and ornate surroundings indicate Earth Kingdom affiliation; visual match with standard Earth Kingdom official attire."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_011",
+      "page_001_panel_012"
+    ],
+    "panel_role": "reaction",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_012"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_013"
+      ],
+      "setup": "Discussion about the Fire Nation colonies being a painful reminder of the war for Earth Kingdom people, delivered in front of others present.",
+      "payoff": "Earth Kingdom official, realizing Fire Lord Zuko is present, nervously clarifies that he meant no personal offense.",
+      "mechanism": "A blunt critique of Fire Nation's colonial legacy is inadvertently made in front of Fire Lord Zuko, eliciting immediate worry and backtracking from the speaker.",
+      "effect": "Reinforces the sensitivity of the political topic and shows how officials may be nervous or deferential around Zuko."
+    },
+    "joke_or_dramatic_mechanism": "Awkwardness/Humor: The official's nervous attempt to reassure Zuko that his remark about colonial occupation wasn't meant personally, highlighting the discomfort in political conversations.",
+    "corrected_story_function": "The panel illustrates the sensitive political atmosphere by showing an Earth Kingdom official nervously clarifying a potentially offensive comment in front of Fire Lord Zuko, directly following critical discussion about Fire Nation colonies.",
+    "adaptation_notes": [
+      "Emphasize the official's stammering and anxious tone in voice acting.",
+      "Hold on the official's worried expression for comedic or tension-building effect.",
+      "Suggest showing Zuko's potential reaction as a visual cut or sound cue, if permitted by next panels.",
+      "Background music should underscore awkwardness, with a brief pause as the official speaks."
+    ],
+    "uncertainty_notes": [
+      "The official's name is not confirmed; their role is deduced from attire and context.",
+      "The exact content of the prior conversation referred to is inferred from local panel window.",
+      "No visual of Fire Lord Zuko; identity is based on dialogue."
+    ],
+    "concise_contextual_summary": "After tense remarks about the Fire Nation's colonies as scars of war in front of a mixed group, a nervous Earth Kingdom official immediately backpedals and tries to reassure Fire Lord Zuko that no personal offense was meant."
+  },
+  {
+    "panel_id": "page_001_panel_014",
+    "reading_order": 14,
+    "resolved_characters": [
+      {
+        "name": "Zuko",
+        "visual_label": "scarred young man in Fire Nation attire",
+        "confidence": "high",
+        "evidence": [
+          "Prominent burn scar around left eye (signature trait), context of addressing Earth King Kuei and taking responsibility for his father's actions lines up with known character (Zuko, Fire Lord, son of Ozai)."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_011",
+      "page_001_panel_012",
+      "page_001_panel_013"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_011",
+        "page_001_panel_012",
+        "page_001_panel_013"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_014"
+      ],
+      "setup": "Discussion of Fire Nation colonies as a painful reminder for Earth people and the nervous official addressing Zuko personally.",
+      "payoff": "Zuko publicly accepts responsibility and vows resolute corrective action.",
+      "mechanism": "Emotional escalation: after discussing the historical wound and social tension caused by the colonies, and a figure anxiously explaining himself in Zuko's presence, Zuko interrupts to own up to his father's legacy and pledge change.",
+      "effect": "Provides decisive closure and leadership, shifting the mood from tension and injury to determined hope."
+    },
+    "joke_or_dramatic_mechanism": "Dramatic payoff—Zuko responds not with defensiveness but with humble acceptance, taking a public stand to right past wrongs.",
+    "corrected_story_function": "Zuko, as Fire Lord, publicly commits to dismantling the Fire Nation colonies and healing divisions caused by his father's war, delivering a moment of personal responsibility and visionary leadership in response to accumulated tension and concern.",
+    "adaptation_notes": [
+      "Narration should emphasize Zuko's sincere and resolute tone, marking a turning point in the conversation.",
+      "Focus camera on Zuko's scar and determined expression, underscoring his direct connection to his father's legacy.",
+      "Background music should swell to reflect both the gravity and hope in his statement.",
+      "If Earth King Kuei's presence is off-screen, consider ambient audio or over-the-shoulder framing to remind audience of the ongoing dialogue."
+    ],
+    "uncertainty_notes": [
+      "Earth King Kuei is only referenced, not visually confirmed.",
+      "Specifics of setting are inferred by the throne and curtains but not fully depicted."
+    ],
+    "concise_contextual_summary": "After dialogue highlighting the pain caused by Fire Nation colonies and an official's nervousness, Zuko steps forward as the Fire Lord to take full responsibility, decisively assuring Earth King Kuei that he will take all necessary action to atone and bring peace."
+  },
+  {
+    "panel_id": "page_001_panel_015",
+    "reading_order": 15,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "Air Nomad with air symbol necklace and cheerful demeanor",
+        "confidence": "high",
+        "evidence": [
+          "Characteristic Air Nomad robes, physical description, central speech role, and direct self-reference."
+        ]
+      },
+      {
+        "name": "Unknown person in green and yellow (likely Earth Kingdom)",
+        "visual_label": "background, dramatically splashed with water",
+        "confidence": "medium",
+        "evidence": [
+          "Clothing color typical of Earth Kingdom; likely guest or official based on recent council-like meeting."
+        ]
+      },
+      {
+        "name": "Unknown flying animal",
+        "visual_label": "off-panel/partially visible, splashing water",
+        "confidence": "medium",
+        "evidence": [
+          "Previous context of Avatar setting and common presence of animals like Appa or Momo; action corresponds to animal mischief."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_014"
+    ],
+    "panel_role": "reaction",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_014"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_015"
+      ],
+      "setup": "Zuko pledges to remove the colonies and do whatever it takes to heal the world.",
+      "payoff": "Aang acknowledges the difficulty of removing colonies, points out potential disruption, and immediately volunteers to oversee the process.",
+      "mechanism": "Aang's enthusiastic volunteering provides a hopeful, optimistic counterpoint to Zuko's grave resolve. It also transitions the focus from the moral duty (Zuko) to practical solutions and the Avatar's mediating role (Aang).",
+      "effect": "Shows the cooperation between Zuko and Aang, highlights Aang's optimism and proactive attitude, and brings lightness with the visual gag in the background."
+    },
+    "joke_or_dramatic_mechanism": "Serious discussion about the difficult process of removing colonies is undercut visually by slapstick chaos in the background, providing comic relief and showing the blend of serious and lighthearted storytelling typical of Avatar.",
+    "corrected_story_function": "Aang addresses the challenge and potential consequences of removing the Fire Nation colonies, volunteers himself for mediating the transition, and injects optimism and reassurance after Zuko's heavy promise. The water-splash slapstick visually breaks tension and humanizes the scene.",
+    "adaptation_notes": [
+      "Use bright, uplifting music to underscore Aang's confident speech.",
+      "Emphasize contrast between serious dialogue (close on Aang with earnest tone) and comic background (pull back to show slapstick with water splash).",
+      "Narration should highlight Aang's proactive spirit, while visual cues deliver the physical comedy.",
+      "Voice actor for Aang should sound upbeat and self-assured.",
+      "Add a comedic sound effect for the water splash, possibly muffling the reaction in the background to keep focus on Aang’s speech."
+    ],
+    "uncertainty_notes": [
+      "Identity of person splashed in the background is not confirmed; likely an Earth Kingdom official.",
+      "Flying animal is not explicitly named—possibly Appa or Momo, but not certain."
+    ],
+    "concise_contextual_summary": "Following Zuko's solemn promise to dismantle the colonies and bring healing, Aang acknowledges the disruption this will cause and optimistically volunteers to oversee a peaceful transition, punctuated by a humorous background mishap."
+  },
+  {
+    "panel_id": "page_001_panel_016",
+    "reading_order": 16,
+    "resolved_characters": [
+      {
+        "name": "Aang",
+        "visual_label": "person in orange and tan clothes, smiling",
+        "confidence": "high",
+        "evidence": [
+          "Dialogue directly states 'I'm the Avatar,' which matches Aang; visual description fits established look."
+        ]
+      },
+      {
+        "name": "Zuko",
+        "visual_label": "person in red robe with topknot",
+        "confidence": "high",
+        "evidence": [
+          "Red robe, topknot, and earlier panels where a scarred man pledges duties align with Zuko's canonical appearance."
+        ]
+      },
+      {
+        "name": "Earth King Kuei (uncertain)",
+        "visual_label": "large bear-like figure in yellow outfit",
+        "confidence": "medium-low",
+        "evidence": [
+          "Bear-like figure with regal associations, in the presence of Zuko and Aang, matches known depictions of Earth King Kuei with his bear Bosco; not fully confirmed due to lack of explicit naming here."
+        ]
+      },
+      {
+        "name": "Momo (uncertain)",
+        "visual_label": "small creature with long ears, green hat",
+        "confidence": "medium",
+        "evidence": [
+          "Description fits Momo’s shape and headgear from some storylines; not fully certain without more visual cues."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_014",
+      "page_001_panel_015"
+    ],
+    "panel_role": "reaction",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_015"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_016"
+      ],
+      "setup": "Aang volunteers to oversee the peaceful removal of the colonies and claims it's 'his thing.'",
+      "payoff": "A bear-like figure (likely Earth King Kuei) expresses surprise at Aang's offer, to which Aang responds with cheerful confidence.",
+      "mechanism": "Aang’s proactive offer in the previous panel sets up an opportunity for another character to react; that reaction is delivered here with surprise, followed by Aang's characteristic optimism.",
+      "effect": "Reinforces Aang's personality and commitment to peace, while both progressing the plot and lightening the moment with his upbeat response."
+    },
+    "joke_or_dramatic_mechanism": "Mild comedic self-awareness: Aang turns his willingness to help into a cheerful declaration of expertise, playing up his unique role as the Avatar.",
+    "corrected_story_function": "This panel delivers the emotional and narrative reaction to Aang's claim: it shows a character (likely the Earth King) expressing surprised approval, and Aang responding in a manner that highlights his positive outlook and core identity as the Avatar. It also maintains the momentum from the prior setup, shifting the scene from tense diplomatic promises to a lighter and more hopeful tone.",
+    "adaptation_notes": [
+      "Aang should be voiced with cheerful confidence and warmth, emphasizing his self-aware humor.",
+      "The bear-like figure's surprise should be played for gentle comedic effect (e.g., slight vocal stammer or wide-eyed animation).",
+      "Zuko's presence is mostly atmospheric here; reaction shots from him could underscore the shift in tone.",
+      "Consider light background cues (music, body language) to transition from tense discussion to Aang's upbeat moment.",
+      "The small creature (likely Momo) could visually react for added levity, but without distracting from the main exchange."
+    ],
+    "uncertainty_notes": [
+      "Bear-like figure's identity (Earth King Kuei or Bosco or both) is not 100% confirmed without further visual or dialogue cues.",
+      "The small creature’s (Momo's) identity is probable but not explicit."
+    ],
+    "concise_contextual_summary": "After Aang volunteers to oversee the peaceful removal of the colonies, the bear-like figure reacts with surprise, prompting Aang to reinforce his optimistic commitment to peace in a lighthearted manner."
+  },
+  {
+    "panel_id": "page_001_panel_017",
+    "reading_order": 17,
+    "resolved_characters": [
+      {
+        "name": "Earth Kingdom official",
+        "visual_label": "official in green robes, happy",
+        "confidence": "high",
+        "evidence": [
+          "Green robes, official context, pleased response fits prior government roles."
+        ]
+      },
+      {
+        "name": "Unknown small figure",
+        "visual_label": "small figure in green, head down, hands over face",
+        "confidence": "low",
+        "evidence": [
+          "Size and posture distinct, but no explicit cues in summaries or dialogue."
+        ]
+      },
+      {
+        "name": "Katara",
+        "visual_label": "blue dress, gesturing, volunteering",
+        "confidence": "high",
+        "evidence": [
+          "Self-reference ('Sokka and I'), blue dress, group composition and action match established trait."
+        ]
+      },
+      {
+        "name": "Sokka",
+        "visual_label": "arms crossed, exasperated",
+        "confidence": "high",
+        "evidence": [
+          "Dialogue references, visual cues, and dynamic with Katara match series pattern."
+        ]
+      },
+      {
+        "name": "Aang",
+        "visual_label": "orange robes, disappointed",
+        "confidence": "high",
+        "evidence": [
+          "Distinctive attire, attitude, and reference to visiting Kyoshi Island."
+        ]
+      },
+      {
+        "name": "Unknown official",
+        "visual_label": "official in darker robes",
+        "confidence": "low",
+        "evidence": [
+          "No specific dialogue or actions identify this character."
+        ]
+      },
+      {
+        "name": "Bear",
+        "visual_label": "bear at far end",
+        "confidence": "medium",
+        "evidence": [
+          "Visual cue; known character context suggests Earth King's bear but not confirmed."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_014",
+      "page_001_panel_015",
+      "page_001_panel_016"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_015",
+        "page_001_panel_016"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_017"
+      ],
+      "setup": "Aang offers to oversee the removal of colonies, expressing confidence and taking initiative. Previous panels establish concern over the peaceful process and the group's readiness to help.",
+      "payoff": "The official is pleased at Aang's involvement. Katara volunteers herself and Sokka, which is met with Sokka's exasperation and Aang's disappointment about missing out on plans.",
+      "mechanism": "Responsibility is passed around the group, escalating from Aang's optimistic offer to Katara roping Sokka in, subverting Sokka's likely expectation for relaxation or a different task, and clashing with Aang's personal plans.",
+      "effect": "Team dynamics are highlighted; humor results from Katara's eager volunteering and Sokka's and Aang's reactions. Stakes of responsibility are underscored while maintaining levity."
+    },
+    "joke_or_dramatic_mechanism": "Katara volunteers others for responsibility without consulting them (classic group dynamic joke), undercutting individual desires—Sokka's exasperation and Aang's disappointment serve as punchlines.",
+    "corrected_story_function": "To affirm the team's commitment to helping with the colony transition, show group involvement, and inject humor by highlighting reluctant or conflicted attitudes.",
+    "adaptation_notes": [
+      "Voice acting should highlight Katara's enthusiasm and Sokka's dry tone.",
+      "Aang's disappointment about missing out on Kyoshi Island plays as a light emotional beat, use a softer, wistful delivery.",
+      "Staging should emphasize the group dynamic—Katara taking charge, Sokka's body language as reluctant, Aang drooping.",
+      "Cut or zoom to Sokka and Aang for comic reaction timing after Katara's volunteer line.",
+      "Bear can be treated as a quirky background element for fans familiar with the context."
+    ],
+    "uncertainty_notes": [
+      "The identity of the small figure in green remains unconfirmed.",
+      "The official in darker robes remains unnamed and uncharacterized.",
+      "The bear is likely Earth King's bear, but this is not confirmed within the panel."
+    ],
+    "concise_contextual_summary": "After Aang volunteers to help oversee the peaceful removal of colonies, an official expresses gratitude and hope. Katara eagerly volunteers herself and Sokka to help, causing Sokka to look exasperated. Aang looks disappointed, expressing he wanted to visit Kyoshi Island, adding a comedic beat to the group's collective responsibility."
+  },
+  {
+    "panel_id": "page_001_panel_018",
+    "reading_order": 18,
+    "resolved_characters": [
+      {
+        "name": "Earth Kingdom Official",
+        "visual_label": "man in green robes and distinctive hat",
+        "confidence": "high",
+        "evidence": [
+          "Distinctive green Earth Kingdom attire and context of overseeing colonies, prior official dialogue in previous panels."
+        ]
+      },
+      {
+        "name": "Katara",
+        "visual_label": "younger person in blue raising finger excitedly",
+        "confidence": "moderate",
+        "evidence": [
+          "Blue clothing (Water Tribe color), prior panel (017) has Katara volunteering, and the enthusiastic, supportive personality matches."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_017"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_017"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_018"
+      ],
+      "setup": "The group discusses helping with an important process and the idea of overseeing a peaceful movement is pitched.",
+      "payoff": "They solidify the idea by naming it 'The Harmony Restoration Movement,' completing the previous brainstorming.",
+      "mechanism": "Idea generation in setup (need for transition oversight) is directly resolved with enthusiastic branding in payoff.",
+      "effect": "Gives the effort a hopeful, unifying label, adding momentum and positivity to the group's mission."
+    },
+    "joke_or_dramatic_mechanism": "Excited interruption: the elder official tries to find an eloquent name, but the younger companion cuts in and shouts the perfect, idealistic title first.",
+    "corrected_story_function": "This panel pays off the planning conversation by providing a symbolic, positive name for their initiative, signaling unity and hopefulness.",
+    "adaptation_notes": [
+      "Pace the audio: One character should sound thoughtful and deliberate, trailing off as he searches for the right words.",
+      "Flow quickly to the younger character's energetic interruption, emphasizing her excitement and hopefulness with an enthusiastic delivery.",
+      "Consider zooming slightly or cutting to a close-up as 'THE HARMONY RESTORATION MOVEMENT!' is announced for dramatic and hopeful emphasis.",
+      "Highlight the contrast between measured thought and spontaneous inspiration for comedic, uplifting impact."
+    ],
+    "uncertainty_notes": [
+      "The identities are inferred based on clothing, previous dialogues, and context, but not explicitly named in this panel.",
+      "If Katara is not the person in blue, this could be another young companion, but context makes Katara most likely."
+    ],
+    "concise_contextual_summary": "The team, having decided to oversee a peaceful transition, now enthusiastically names their big initiative 'The Harmony Restoration Movement,' showcasing hope and unity through collaborative energy."
+  },
+  {
+    "panel_id": "page_001_panel_019",
+    "reading_order": 19,
+    "resolved_characters": [
+      {
+        "name": null,
+        "visual_label": "Unseen Speaker (likely from prior group)",
+        "confidence": "medium",
+        "evidence": [
+          "Dialogue matches the excited tone of previous panels; likely the same character(s) involved in naming the movement."
+        ]
+      }
+    ],
+    "continuity_links": [
+      "page_001_panel_017",
+      "page_001_panel_018"
+    ],
+    "panel_role": "payoff",
+    "setup_payoff_relation": {
+      "setup_panel_ids": [
+        "page_001_panel_018"
+      ],
+      "payoff_panel_ids": [
+        "page_001_panel_019"
+      ],
+      "setup": "A character names the new initiative, 'The Harmony Restoration Movement', in an enthusiastic declaration.",
+      "payoff": "Another voice (or an echo of the previous one) immediately affirms the name with excited emphasis.",
+      "mechanism": "Call-and-response, reinforcing and escalating enthusiasm for the newly-named initiative.",
+      "effect": "Heightens the sense of momentum and group buy-in, making the naming of the movement feel like an event."
+    },
+    "joke_or_dramatic_mechanism": "Exaggerated affirmation: The initial announcement is quickly and loudly seconded, comedically amplifying group energy.",
+    "corrected_story_function": "This panel serves as a punchy affirmation and celebration of the chosen name, solidifying group unity around the Harmony Restoration Movement. The bold, disembodied shout visually and tonally emphasizes the movement’s importance and excitement.",
+    "adaptation_notes": [
+      "Use a voiced-over, bold, and energetic exclamation for the line.",
+      "Consider a zoom or rapid text animation to visually represent the excited shout, in lieu of character visuals.",
+      "Let the moment linger briefly for comedic effect, since it's a payoff of prior panel setup."
+    ],
+    "uncertainty_notes": [
+      "The speaker is not shown, so identity is inferred from the immediate enthusiasm in previous panels.",
+      "The location and individual speaking remain ambiguous but are likely from the group present in earlier context."
+    ],
+    "concise_contextual_summary": "The momentum from naming the movement carries through, as an unseen but clearly enthusiastic participant loudly and energetically affirms the newly-chosen name."
+  }
+]

@@ -1,0 +1,259 @@
+[
+  {
+    "panel_id": "page_001_panel_002",
+    "reading_order": 2,
+    "visual_description": "Two figures dressed in blue, fur-lined clothes stand together on a floating ice platform. In the foreground, a silhouette of a person sits cross-legged inside a glowing sphere or iceberg. The background shows broken ice and frozen water.",
+    "dialogue_notes": [
+      "A hundred years passed and my brother Sokka and I discovered the new Avatar, an airbender named Aang."
+    ],
+    "action": "Katara and Sokka discover Aang encased in a glowing sphere of ice.",
+    "uncertainty_notes": [
+      "Silhouette inside sphere is assumed to be Aang, but not explicitly identified visually in this panel."
+    ],
+    "concise_summary": "Katara and her brother Sokka find the Avatar, Aang, encased in ice after a hundred years have passed."
+  },
+  {
+    "panel_id": "page_001_panel_003",
+    "reading_order": 3,
+    "visual_description": "The panel has two main scenes. In the upper part, a young monk in orange and yellow robes (Aang) is knocked back by a blast, saying 'OOF!' in front of a stone sculpture with a face. In the lower part, the same figure stands on a rocky outcropping, staff in hand, gazing at a landscape of distant mountains under a bright sky.",
+    "dialogue_notes": [
+      "Oof!",
+      "Although his airbending skills were great, he had a lot to learn before he was ready to save anyone.",
+      "But from the day I first met him, I believed Aang would save the world.",
+      "And you know what?"
+    ],
+    "action": "Aang gets knocked back during airbending practice, then stands contemplatively on a cliff looking at the horizon.",
+    "uncertainty_notes": [
+      "It is not explicitly shown where this location is.",
+      "It is inferred that the narrator is Katara from context."
+    ],
+    "concise_summary": "I narrate as I remember Aang training in airbending, realizing he still had much to learn, but from the start, I always believed he would save the world."
+  },
+  {
+    "panel_id": "page_001_panel_004",
+    "reading_order": 4,
+    "visual_description": "A plain white box with bold black text in the center reading 'I WAS RIGHT.'",
+    "dialogue_notes": [
+      "I WAS RIGHT."
+    ],
+    "action": "No visible action; only narration or thought.",
+    "uncertainty_notes": [
+      "No characters are shown.",
+      "No background context provided."
+    ],
+    "concise_summary": "I am expressing certainty that my previous thoughts or suspicions were correct."
+  },
+  {
+    "panel_id": "page_001_panel_005",
+    "reading_order": 5,
+    "visual_description": "One person is lying on the ground, appearing defeated or exhausted, while another person stands nearby and looks at them. The background is red and smoky, suggesting a dramatic or battle aftermath.",
+    "dialogue_notes": [],
+    "action": "The standing person watches the one on the ground after what looks like a confrontation.",
+    "uncertainty_notes": [
+      "No visible dialogue.",
+      "Identities of characters are uncertain based on this panel alone."
+    ],
+    "concise_summary": "After a confrontation, I see one person lying motionless on the ground while another stands over them in a tense, smoky atmosphere."
+  },
+  {
+    "panel_id": "page_001_panel_006",
+    "reading_order": 6,
+    "visual_description": "A white rectangular narration box with black text. No characters or scenery are visible.",
+    "dialogue_notes": [
+      "WITH THE HELP OF HIS FRIENDS, AANG DEFEATED FIRE LORD OZAI AND ENDED THE HUNDRED YEARS' WAR."
+    ],
+    "action": "Narration summarizes Aang's victory over Fire Lord Ozai with his friends.",
+    "uncertainty_notes": [
+      "No visual depiction of characters or events.",
+      "Unclear which friends are present.",
+      "No visual cues for emotional tone."
+    ],
+    "concise_summary": "I narrate how Aang, together with his friends, defeated Fire Lord Ozai and ended the long war."
+  },
+  {
+    "panel_id": "page_001_panel_007",
+    "reading_order": 7,
+    "visual_description": "A rectangular narration box with bolded black text on a white background. No characters or scenery are present.",
+    "dialogue_notes": [
+      "Zuko, Ozai's son and our ally, became the new Fire Lord."
+    ],
+    "action": "Narration informs us that Zuko has become the new Fire Lord.",
+    "uncertainty_notes": [
+      "No visual depiction of Zuko or other characters.",
+      "No context for surrounding events."
+    ],
+    "concise_summary": "I explain that Zuko, the son of Ozai and our ally, has become the new Fire Lord."
+  },
+  {
+    "panel_id": "page_001_panel_008",
+    "reading_order": 8,
+    "visual_description": "A figure with a topknot, seen from behind, stands on an elevated platform overlooking an expansive courtyard. In the courtyard below, a large crowd is gathered in front of an ornate palace with traditional red and gold rooftops. Waterways border the courtyard, leading up to the majestic building.",
+    "dialogue_notes": [],
+    "action": "The figure appears to be addressing or observing the large assembled crowd from a position of authority.",
+    "uncertainty_notes": [
+      "The identity of the central figure is not explicitly shown.",
+      "No visible dialogue or speech is present in the panel.",
+      "The exact event taking place is uncertain."
+    ],
+    "concise_summary": "I stand behind a powerful figure watching them overlook a large gathered crowd in front of an impressive palace, possibly about to address them."
+  },
+  {
+    "panel_id": "page_001_panel_009",
+    "reading_order": 9,
+    "visual_description": "The panel shows two rectangular text boxes filled with a light olive color. The background is blank and no characters or scenery are visible.",
+    "dialogue_notes": [],
+    "action": "Text narration or inner thoughts are presented; no visible characters or physical actions are depicted.",
+    "uncertainty_notes": [
+      "The content of the text boxes is not legible.",
+      "It is unclear who is speaking or narrating."
+    ],
+    "concise_summary": "This panel contains two unreadable narration or dialogue boxes with no visible characters or scenery."
+  },
+  {
+    "panel_id": "page_001_panel_010",
+    "reading_order": 10,
+    "visual_description": "A white narration box with black border and bold text. There are no character images, only narration.",
+    "dialogue_notes": [
+      "TOGETHER WITH EARTH KING KUEI, AANG AND ZUKO PROMISED TO RESTORE THE FOUR NATIONS TO HARMONY."
+    ],
+    "action": "Narration summarizes a promise made by Earth King Kuei, Aang, and Zuko to bring harmony to the Four Nations.",
+    "uncertainty_notes": [
+      "No characters are visually depicted in this panel.",
+      "The setting is not shown."
+    ],
+    "concise_summary": "This panel narrates that Earth King Kuei, Aang, and Zuko made a promise to restore harmony among the Four Nations."
+  },
+  {
+    "panel_id": "page_001_panel_011",
+    "reading_order": 11,
+    "visual_description": "A hand with a blue arrow tattoo points at specific locations on a colorful map depicting the Earth Kingdom and Fire Nation colonies marked with red fire symbols. Two speech bubbles are present.",
+    "dialogue_notes": [
+      "I never realized the Fire Nation had built so many colonies in the Earth Kingdom.",
+      "Yes."
+    ],
+    "action": "I am studying a map and discussing the Fire Nation colonies with someone.",
+    "uncertainty_notes": [
+      "It is not entirely clear whose hand is pointing, but the blue arrow suggests it is Aang.",
+      "The identity of the other speaker is not explicitly shown."
+    ],
+    "concise_summary": "I observe a map revealing the extensive presence of Fire Nation colonies in the Earth Kingdom and discuss this realization with another person."
+  },
+  {
+    "panel_id": "page_001_panel_012",
+    "reading_order": 12,
+    "visual_description": "A group of people, including a figure in a long maroon robe, a person in orange, and others dressed in varying colors, stands inside a grand, richly decorated room with green and gold walls. Some characters are looking at a large wall map, while others are walking up the stairs. A white creature with long ears and a large person in green and yellow are at the base of the stairs.",
+    "dialogue_notes": [
+      "For the Earth people, they're a constant reminder of the war, like an old scar."
+    ],
+    "action": "The group either observes or discusses the map and the room, while others move up the staircase.",
+    "uncertainty_notes": [
+      "Exact identities of some characters are not clearly specified.",
+      "Speaker of the dialogue is not precisely identified."
+    ],
+    "concise_summary": "We observe a group interacting in an ornate room, focused on a map, while reflecting on lingering scars of war felt by the Earth people."
+  },
+  {
+    "panel_id": "page_001_panel_013",
+    "reading_order": 13,
+    "visual_description": "A person dressed in elaborate green official robes and hat, with glasses and a necklace, stands with one hand raised and a nervous expression. The background suggests an ornate interior, possibly a palace or formal hall.",
+    "dialogue_notes": [
+      "Oh, I...I...I--Fire Lord Zuko, I meant nothing personal!"
+    ],
+    "action": "The official nervously tries to explain himself, addressing Fire Lord Zuko.",
+    "uncertainty_notes": [
+      "The character's name is not shown.",
+      "Unclear what specifically prompted the official's nervous statement."
+    ],
+    "concise_summary": "An anxious official insists to Fire Lord Zuko that he meant nothing personal, appearing defensive and concerned."
+  },
+  {
+    "panel_id": "page_001_panel_014",
+    "reading_order": 14,
+    "visual_description": "A young man with a prominent burn scar around his left eye, wearing traditional Fire Nation attire, speaks with determination. The background shows the edge of a throne and draped curtains.",
+    "dialogue_notes": [
+      "No, Earth King Kuei. You're right.",
+      "After all the pain my father has caused, it's my duty to bring healing to the world.",
+      "I'll remove those colonies.",
+      "I'll do whatever it takes."
+    ],
+    "action": "The scarred man is pledging to remove colonies and take responsibility for his father's actions.",
+    "uncertainty_notes": [
+      "Only the scarred character is visible; Earth King Kuei is not shown.",
+      "Setting specifics are not fully visible."
+    ],
+    "concise_summary": "Zuko passionately promises to Earth King Kuei that he will remove the colonies and do whatever it takes to bring healing to the world after his father's wrongdoings."
+  },
+  {
+    "panel_id": "page_001_panel_015",
+    "reading_order": 15,
+    "visual_description": "Aang stands in the foreground, looking cheerful and confident, pointing to himself. He wears Air Nomad robes and a necklace with an air symbol. In the background, a person in green and yellow is dramatically splashed in the face with water from a flying animal.",
+    "dialogue_notes": [
+      "BUT REMOVING THE COLONIES WON'T BE EASY. A LOT OF PEOPLE'S LIVES ARE GONNA BE DISRUPTED.",
+      "WE NEED SOMEONE TO OVERSEE EVERYTHING, TO MAKE SURE IT ALL GOES PEACEFULLY. SOMEONE LIKE ME!"
+    ],
+    "action": "Aang explains the challenges of removing the colonies and volunteers to oversee a peaceful transition, while chaos unfolds in the background.",
+    "uncertainty_notes": [
+      "The identity of the background characters and the animal is not explicitly stated."
+    ],
+    "concise_summary": "Aang talks about the difficulties of removing the colonies and says he should oversee the transition, as someone is surprised by being splashed with water in the background."
+  },
+  {
+    "panel_id": "page_001_panel_016",
+    "reading_order": 16,
+    "visual_description": "At the bottom of a staircase, a large bear-like figure in a yellow outfit is facing two people and a creature near the top of the stairs. One person is dressed in a regal red robe and has their hair in a topknot, while the other is dressed in orange and tan clothes, smiling. The small creature has long ears and a green hat.",
+    "dialogue_notes": [
+      "Really? You'd want to do that?",
+      "Yeah, I'm the Avatar! Making stuff go peacefully is kind of my thing!"
+    ],
+    "action": "The bear-like figure engages the people on the stairs in conversation. The person in orange responds confidently.",
+    "uncertainty_notes": [
+      "The identity of the bear-like figure is uncertain.",
+      "The identity of the small creature is uncertain."
+    ],
+    "concise_summary": "A conversation takes place on a staircase; one figure is surprised, while the Avatar cheerfully confirms their aim to resolve things peacefully."
+  },
+  {
+    "panel_id": "page_001_panel_017",
+    "reading_order": 17,
+    "visual_description": "Five people stand on a wooden platform. One is an official wearing green robes, looking happy. Next to them is a small figure in green, head down and hands over face. I am in a blue dress, gesturing helpfully and speaking up. Sokka stands with arms crossed, looking slightly exasperated. Aang is in orange robes, looking disappointed. Another official in darker robes stands nearby. There is a bear at the far end.",
+    "dialogue_notes": [
+      "Wonderful! The Avatar's personal involvement will give the entire process an air of hope!",
+      "Sokka and I can help!",
+      "Aw, I was gonna visit Kyoshi Island."
+    ],
+    "action": "The group is discussing helping with an important process, and I am volunteering Sokka and myself.",
+    "uncertainty_notes": [
+      "Some characters' identities are assumed from appearance and context.",
+      "Purpose of the process is not specified."
+    ],
+    "concise_summary": "An official expresses hope about the Avatar's involvement. I excitedly volunteer Sokka and myself to help, while Aang looks disappointed about missing a trip to Kyoshi Island."
+  },
+  {
+    "panel_id": "page_001_panel_018",
+    "reading_order": 18,
+    "visual_description": "One man in green robes and a distinctive hat strokes his chin thoughtfully while another, younger person in blue raises a finger excitedly with a big smile.",
+    "dialogue_notes": [
+      "It'll be a MOVEMENT-- a movement toward HARMONY! We'll call it... we'll call it...",
+      "THE HARMONY RESTORATION MOVEMENT!"
+    ],
+    "action": "The man in green is thinking of a name for a new initiative, while the other enthusiastically announces the chosen name.",
+    "uncertainty_notes": [
+      "The names of the characters are not explicitly shown."
+    ],
+    "concise_summary": "I see one person deep in thought trying to name a movement, and another happily shouts out the final name: The Harmony Restoration Movement."
+  },
+  {
+    "panel_id": "page_001_panel_019",
+    "reading_order": 19,
+    "visual_description": "At the top of the panel, a speech bubble with bold text rises from a greenish background. No characters are visible.",
+    "dialogue_notes": [
+      "YES! THE HARMONY RESTORATION MOVEMENT!"
+    ],
+    "action": "Someone is emphatically announcing or responding about the Harmony Restoration Movement.",
+    "uncertainty_notes": [
+      "The speaker is not visible.",
+      "The exact setting and other visual details are unclear."
+    ],
+    "concise_summary": "Someone, likely responding excitedly, declares support for the Harmony Restoration Movement."
+  }
+]

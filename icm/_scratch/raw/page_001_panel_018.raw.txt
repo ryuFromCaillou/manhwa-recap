@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_018",
+  "reading_order": 18,
+  "visual_description": "One man in green robes and a distinctive hat strokes his chin thoughtfully while another, younger person in blue raises a finger excitedly with a big smile.",
+  "dialogue_notes": [
+    "It'll be a MOVEMENT-- a movement toward HARMONY! We'll call it... we'll call it...",
+    "THE HARMONY RESTORATION MOVEMENT!"
+  ],
+  "action": "The man in green is thinking of a name for a new initiative, while the other enthusiastically announces the chosen name.",
+  "uncertainty_notes": [
+    "The names of the characters are not explicitly shown."
+  ],
+  "concise_summary": "I see one person deep in thought trying to name a movement, and another happily shouts out the final name: The Harmony Restoration Movement."
+}

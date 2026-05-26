@@ -1,0 +1,13 @@
+{
+  "panel_id": "page_001_panel_002",
+  "reading_order": 2,
+  "visual_description": "Two figures dressed in blue, fur-lined clothes stand together on a floating ice platform. In the foreground, a silhouette of a person sits cross-legged inside a glowing sphere or iceberg. The background shows broken ice and frozen water.",
+  "dialogue_notes": [
+    "A hundred years passed and my brother Sokka and I discovered the new Avatar, an airbender named Aang."
+  ],
+  "action": "Katara and Sokka discover Aang encased in a glowing sphere of ice.",
+  "uncertainty_notes": [
+    "Silhouette inside sphere is assumed to be Aang, but not explicitly identified visually in this panel."
+  ],
+  "concise_summary": "Katara and her brother Sokka find the Avatar, Aang, encased in ice after a hundred years have passed."
+}

@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_013",
+  "reading_order": 13,
+  "visual_description": "A person dressed in elaborate green official robes and hat, with glasses and a necklace, stands with one hand raised and a nervous expression. The background suggests an ornate interior, possibly a palace or formal hall.",
+  "dialogue_notes": [
+    "Oh, I...I...I--Fire Lord Zuko, I meant nothing personal!"
+  ],
+  "action": "The official nervously tries to explain himself, addressing Fire Lord Zuko.",
+  "uncertainty_notes": [
+    "The character's name is not shown.",
+    "Unclear what specifically prompted the official's nervous statement."
+  ],
+  "concise_summary": "An anxious official insists to Fire Lord Zuko that he meant nothing personal, appearing defensive and concerned."
+}

@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_012",
+  "reading_order": 12,
+  "visual_description": "A group of people, including a figure in a long maroon robe, a person in orange, and others dressed in varying colors, stands inside a grand, richly decorated room with green and gold walls. Some characters are looking at a large wall map, while others are walking up the stairs. A white creature with long ears and a large person in green and yellow are at the base of the stairs.",
+  "dialogue_notes": [
+    "For the Earth people, they're a constant reminder of the war, like an old scar."
+  ],
+  "action": "The group either observes or discusses the map and the room, while others move up the staircase.",
+  "uncertainty_notes": [
+    "Exact identities of some characters are not clearly specified.",
+    "Speaker of the dialogue is not precisely identified."
+  ],
+  "concise_summary": "We observe a group interacting in an ornate room, focused on a map, while reflecting on lingering scars of war felt by the Earth people."
+}

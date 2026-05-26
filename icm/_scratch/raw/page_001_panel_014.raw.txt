@@ -1,0 +1,17 @@
+{
+  "panel_id": "page_001_panel_014",
+  "reading_order": 14,
+  "visual_description": "A young man with a prominent burn scar around his left eye, wearing traditional Fire Nation attire, speaks with determination. The background shows the edge of a throne and draped curtains.",
+  "dialogue_notes": [
+    "No, Earth King Kuei. You're right.",
+    "After all the pain my father has caused, it's my duty to bring healing to the world.",
+    "I'll remove those colonies.",
+    "I'll do whatever it takes."
+  ],
+  "action": "The scarred man is pledging to remove colonies and take responsibility for his father's actions.",
+  "uncertainty_notes": [
+    "Only the scarred character is visible; Earth King Kuei is not shown.",
+    "Setting specifics are not fully visible."
+  ],
+  "concise_summary": "Zuko passionately promises to Earth King Kuei that he will remove the colonies and do whatever it takes to bring healing to the world after his father's wrongdoings."
+}

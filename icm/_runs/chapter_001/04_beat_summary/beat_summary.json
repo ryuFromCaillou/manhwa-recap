@@ -1,0 +1,98 @@
+{
+  "beats": [
+    {
+      "beat_id": "beat_01_inciting_event_and_narrative_setup",
+      "panel_ids": [
+        "page_001_panel_002",
+        "page_001_panel_003",
+        "page_001_panel_004"
+      ],
+      "state_before": "World is in stasis after a hundred years without the Avatar; Katara's hope and search have been ongoing.",
+      "trigger": "Katara and Sokka discover Aang, the new Avatar, encased in ice.",
+      "state_after": "Aang is found, hope is renewed, and Katara feels validated in her belief in his destiny.",
+      "emotional_shift": "From uncertainty/despair to hope and conviction.",
+      "story_function": "Introduces the inciting incident (discovery of Aang), establishes Katara's faith and its payoff, and transitions to faith in Aang as savior.",
+      "recap_sentence": "Katara and Sokka discover Aang after a hundred-year absence, Katara's faith in him is revealed and emphatically affirmed.",
+      "uncertainty_notes": [
+        "Figure in the ice is presumed to be Aang before the flashback, but visual confirmation is withheld in first panel.",
+        "Character attributions for narration rely on established voiceover context."
+      ]
+    },
+    {
+      "beat_id": "beat_02_climax_recap_and_postwar_transition",
+      "panel_ids": [
+        "page_001_panel_005",
+        "page_001_panel_006",
+        "page_001_panel_007",
+        "page_001_panel_008"
+      ],
+      "state_before": "Katara's faith in Aang's destiny is emphatically declared.",
+      "trigger": "Narration and visuals confirm the outcome: Aang's victory, Ozai's defeat, and Zuko's rise.",
+      "state_after": "War is over, Aang is victorious, Zuko is the new Fire Lord, transition to new era is visually and narratively established.",
+      "emotional_shift": "From tension/uncertainty to resolution, triumph, and hope for a new order.",
+      "story_function": "Climactic recap of Aang's success, Zuko's succession, and setting up the new world order—effectively a prologue wrap-up and time jump.",
+      "recap_sentence": "Narration affirms Aang has defeated Ozai with his friends' help, Zuko becomes the new Fire Lord, visually confirmed before a cheering crowd.",
+      "uncertainty_notes": [
+        "Panel 005 is ambiguous—could be aftermath/sacrifice or simply visual emphasis—but closes out the faith/victory arc.",
+        "Panels are narration or transitional, with sparse visuals (except Zuko’s visual establishment)."
+      ]
+    },
+    {
+      "beat_id": "beat_03_peace_promise_and_emergence_of_new_conflict",
+      "panel_ids": [
+        "page_001_panel_009",
+        "page_001_panel_010",
+        "page_001_panel_011",
+        "page_001_panel_012"
+      ],
+      "state_before": "New leadership is announced, and a postwar order is celebrated.",
+      "trigger": "Narration and group reflection describe a promise between Aang, Zuko, and Earth King Kuei to restore harmony after the war.",
+      "state_after": "Focus shifts from victory to the lasting problems of war, specifically Fire Nation colonies in the Earth Kingdom, and the emotional scars left.",
+      "emotional_shift": "Euphoria transitions to soberness and complexity as postwar challenges are foregrounded.",
+      "story_function": "Transitions the narrative: from wrap-up of the old conflict to pronouncement of peace and surfacing of new, complicated issues that threaten harmony.",
+      "recap_sentence": "After promising peace and unity among nations, the group is confronted with the extent and impact of Fire Nation colonies, highlighting lasting wounds and laying groundwork for the next conflict.",
+      "uncertainty_notes": [
+        "Panel 009's narration is unreadable but likely contextual/bridging.",
+        "Dialogue assignments are sometimes unclear (e.g., who is speaking in emotional reflections)."
+      ]
+    },
+    {
+      "beat_id": "beat_04_tension_group_dynamics_and_responsibility",
+      "panel_ids": [
+        "page_001_panel_013",
+        "page_001_panel_014",
+        "page_001_panel_015",
+        "page_001_panel_016",
+        "page_001_panel_017"
+      ],
+      "state_before": "Group faces the painful legacy of war and the political task of resolving entrenched colonies.",
+      "trigger": "Tense, awkward interaction as the colonial issue is discussed in Zuko's presence, prompting a declaration of responsibility and the group's offer to help.",
+      "state_after": "Zuko accepts responsibility and pledges reform; Aang volunteers to mediate, Katara ropes in Sokka, group dynamic humor emerges, and a collective sense of responsibility is cemented amid light character conflict.",
+      "emotional_shift": "From political discomfort and tension to commitment, hope, and comedic teamwork.",
+      "story_function": "Explores the sensitivities and group roles—shows Zuko's growth, Aang’s optimism, Katara’s assertiveness, and Sokka’s comedic reluctance as they step up to tackle the next big challenge.",
+      "recap_sentence": "Tension over the legacy of colonies is diffused by Zuko’s sincerity and Aang’s optimism, as the group volunteers (sometimes unwillingly) to oversee the transition, highlighted by classic team banter.",
+      "uncertainty_notes": [
+        "Earth King Kuei and bear/Bosco’s precise identities/presence are sometimes visually ambiguous.",
+        "Some background characters remain unnamed, but this does not affect overall group dynamic."
+      ]
+    },
+    {
+      "beat_id": "beat_05_harmony_restoration_movement_initiative",
+      "panel_ids": [
+        "page_001_panel_018",
+        "page_001_panel_019"
+      ],
+      "state_before": "Team has volunteered to help, but the process is unnamed and formless.",
+      "trigger": "Group and officials collaboratively name the endeavor as 'The Harmony Restoration Movement.'",
+      "state_after": "The effort has a hopeful title, group enthusiasm is high, and the initiative is ready to launch.",
+      "emotional_shift": "From organization and planning to excitement and unity.",
+      "story_function": "Hooks the audience on the next phase of the story by giving the mission a name, solidifying unity, hope, and forward momentum.",
+      "recap_sentence": "The group dubs their new mission ‘The Harmony Restoration Movement’, cheered on with energetic affirmation, launching them into collective action.",
+      "uncertainty_notes": [
+        "Identity of the young enthusiastic shouter is inferred but not visually confirmed.",
+        "Speaker in panel 019 is unseen but contextually clear."
+      ]
+    }
+  ],
+  "leftover_panels": []
+}

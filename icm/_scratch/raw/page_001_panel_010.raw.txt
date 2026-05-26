@@ -1,0 +1,14 @@
+{
+  "panel_id": "page_001_panel_010",
+  "reading_order": 10,
+  "visual_description": "A white narration box with black border and bold text. There are no character images, only narration.",
+  "dialogue_notes": [
+    "TOGETHER WITH EARTH KING KUEI, AANG AND ZUKO PROMISED TO RESTORE THE FOUR NATIONS TO HARMONY."
+  ],
+  "action": "Narration summarizes a promise made by Earth King Kuei, Aang, and Zuko to bring harmony to the Four Nations.",
+  "uncertainty_notes": [
+    "No characters are visually depicted in this panel.",
+    "The setting is not shown."
+  ],
+  "concise_summary": "This panel narrates that Earth King Kuei, Aang, and Zuko made a promise to restore harmony among the Four Nations."
+}

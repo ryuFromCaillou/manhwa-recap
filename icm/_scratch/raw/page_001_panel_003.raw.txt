@@ -1,0 +1,17 @@
+{
+  "panel_id": "page_001_panel_003",
+  "reading_order": 3,
+  "visual_description": "The panel has two main scenes. In the upper part, a young monk in orange and yellow robes (Aang) is knocked back by a blast, saying 'OOF!' in front of a stone sculpture with a face. In the lower part, the same figure stands on a rocky outcropping, staff in hand, gazing at a landscape of distant mountains under a bright sky.",
+  "dialogue_notes": [
+    "Oof!",
+    "Although his airbending skills were great, he had a lot to learn before he was ready to save anyone.",
+    "But from the day I first met him, I believed Aang would save the world.",
+    "And you know what?"
+  ],
+  "action": "Aang gets knocked back during airbending practice, then stands contemplatively on a cliff looking at the horizon.",
+  "uncertainty_notes": [
+    "It is not explicitly shown where this location is.",
+    "It is inferred that the narrator is Katara from context."
+  ],
+  "concise_summary": "I narrate as I remember Aang training in airbending, realizing he still had much to learn, but from the start, I always believed he would save the world."
+}
