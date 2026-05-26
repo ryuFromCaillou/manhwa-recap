@@ -254,6 +254,7 @@ def panelize_chapter(
     input_dir: Path,
     output_root: Path,
     *,
+    chapter_dir: Path | None = None,
     detector: str = "builtin",
     gutter_mode: str = "auto",
     white_threshold: int = 245,
@@ -264,7 +265,8 @@ def panelize_chapter(
 ) -> Path:
     """Detect and crop panels for an ordered chapter folder."""
     image_paths = io_utils.discover_input_images(input_dir)
-    chapter_dir = output_root / input_dir.name
+    if chapter_dir is None:
+        chapter_dir = output_root / input_dir.name
     panels_dir = chapter_dir / "panels"
     io_utils.ensure_dir(panels_dir)
 

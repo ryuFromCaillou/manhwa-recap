@@ -2,11 +2,9 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from pathlib import Path
 from typing import Any, Iterable
-
-from .schemas import Transcript
-
 
 ALLOWED_EXTS = {".png", ".jpg", ".jpeg", ".webp"}
 
@@ -65,6 +63,33 @@ def discover_input_images(input_dir: Path) -> list[Path]:
 def ensure_dir(path: Path) -> None:
     """Create `path` (and parents) if it does not exist."""
     path.mkdir(parents=True, exist_ok=True)
+
+
+def copy_input_images_to_dir(
+    source_input_dir: Path,
+    dest_input_dir: Path,
+    *,
+    overwrite: bool = False,
+) -> tuple[int, int]:
+    """
+    Copy supported input images from `source_input_dir` into `dest_input_dir`.
+
+    Returns:
+        (copied_count, skipped_count)
+    """
+    images = discover_input_images(source_input_dir)
+    ensure_dir(dest_input_dir)
+
+    copied = 0
+    skipped = 0
+    for src in images:
+        dst = dest_input_dir / src.name
+        if dst.exists() and not overwrite:
+            skipped += 1
+            continue
+        shutil.copy2(src, dst)
+        copied += 1
+    return copied, skipped
 
 
 def write_json(path: Path, obj: Any) -> None:
@@ -146,7 +171,7 @@ def render_summary_text(
     return "\n".join(lines).strip() + "\n"
 
 
-def render_transcript_text(title: str, transcript: Transcript) -> str:
+def render_transcript_text(title: str, transcript: Any) -> str:
     lines: list[str] = []
     lines.append(f"Title: {title}")
     lines.append("")

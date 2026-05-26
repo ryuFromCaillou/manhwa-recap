@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PanelOCRResultList",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["panel_id", "text", "confidence", "source_image_path", "cropped_image_path"],
+    "properties": {
+      "panel_id": { "type": "string" },
+      "text": { "type": "string" },
+      "confidence": { "type": ["number", "null"] },
+      "source_image_path": { "type": "string" },
+      "cropped_image_path": { "type": "string" }
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChapterSummary",
+  "type": "object",
+  "required": [
+    "title",
+    "overall_summary",
+    "major_events",
+    "characters_mentioned",
+    "unresolved_or_uncertain"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "overall_summary": { "type": "string" },
+    "major_events": { "type": "array", "items": { "type": "string" } },
+    "characters_mentioned": { "type": "array", "items": { "type": "string" } },
+    "unresolved_or_uncertain": { "type": "array", "items": { "type": "string" } }
+  }
+}
+

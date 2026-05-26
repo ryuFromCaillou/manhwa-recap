@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PanelSummaryList",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "panel_id",
+      "reading_order",
+      "visual_description",
+      "dialogue_notes",
+      "action",
+      "uncertainty_notes",
+      "concise_summary"
+    ],
+    "properties": {
+      "panel_id": { "type": "string" },
+      "reading_order": { "type": "integer" },
+      "visual_description": { "type": "string" },
+      "dialogue_notes": { "type": "array", "items": { "type": "string" } },
+      "action": { "type": "string" },
+      "uncertainty_notes": { "type": "array", "items": { "type": "string" } },
+      "concise_summary": { "type": "string" }
+    }
+  }
+}
+

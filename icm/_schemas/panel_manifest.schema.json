@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PanelManifestList",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "panel_id",
+      "source_image_path",
+      "cropped_image_path",
+      "page_index",
+      "panel_index",
+      "reading_order",
+      "bbox"
+    ],
+    "properties": {
+      "panel_id": { "type": "string" },
+      "source_image_path": { "type": "string" },
+      "cropped_image_path": { "type": "string" },
+      "page_index": { "type": "integer" },
+      "panel_index": { "type": "integer" },
+      "reading_order": { "type": "integer" },
+      "bbox": {
+        "type": "array",
+        "items": { "type": "integer" },
+        "minItems": 4,
+        "maxItems": 4
+      }
+    }
+  }
+}
+

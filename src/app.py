@@ -4,30 +4,20 @@ import argparse
 import sys
 from pathlib import Path
 
-from . import io_utils, panelize
+from . import io_utils
 from .config import (
     DEFAULT_MODEL,
     DEFAULT_OUTPUT_FORMAT,
     AppConfig,
 )
-from .ocr import run_ocr
-from .schemas import (
-    BeatSummary,
-    ChapterSummary,
-    ContextualPanelInterpretation,
-    PanelManifest,
-    PanelSummary,
-    Transcript,
-)
-from .summarize import (
-    generate_transcript_from_beats,
-    repair_transcript_alignment,
-    summarize_beats_from_contextual_panel_interpretations,
-    summarize_chapter_from_beats,
-    summarize_contextual_panels,
-    summarize_panel,
-    validate_transcript_alignment,
-)
+
+
+ICM_RUNS_ROOT = Path("icm") / "_runs"
+STAGE_01 = "01_panel_extraction"
+STAGE_02 = "02_panel_summary"
+STAGE_03 = "03_contextual_interpretation"
+STAGE_04 = "04_beat_summary"
+STAGE_05 = "05_transcript_generation"
 
 
 def _build_parser() -> argparse.ArgumentParser:
@@ -35,8 +25,33 @@ def _build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="manhwa-recap")
     sub = p.add_subparsers(dest="cmd", required=True)
 
+    ir = sub.add_parser(
+        "init-run",
+        help="Create/refresh an ICM run folder and copy chapter inputs into it",
+    )
+    ir.add_argument(
+        "source_input_dir",
+        type=Path,
+        help="Folder of ordered images (e.g. input/chapter_001)",
+    )
+    ir.add_argument(
+        "--chapter-id",
+        default=None,
+        help="Override run folder name (default: source folder name)",
+    )
+    ir.add_argument("--output-root", type=Path, default=ICM_RUNS_ROOT)
+    ir.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Overwrite existing images in the run inputs folder",
+    )
+
     ps = sub.add_parser("panel-summarize", help="Summarize a chapter using panelized images")
-    ps.add_argument("input_dir", type=Path, help="Folder of ordered images (e.g. input/chapter_001)")
+    ps.add_argument(
+        "input_dir",
+        type=Path,
+        help="Folder of ordered images (recommended: icm/_runs/<chapter_id>/inputs)",
+    )
     ps.add_argument("--title", required=True, help="Chapter title for the output")
     ps.add_argument("--model", default=DEFAULT_MODEL)
     ps.add_argument(
@@ -52,7 +67,7 @@ def _build_parser() -> argparse.ArgumentParser:
         default=3,
         help="Number of previous panels to include during contextual panel interpretation.",
     )
-    ps.add_argument("--output-root", type=Path, default=Path("output"))
+    ps.add_argument("--output-root", type=Path, default=ICM_RUNS_ROOT)
     ps.add_argument(
         "--raw-responses-dir",
         type=Path,
@@ -66,8 +81,12 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     p_panel = sub.add_parser("panelize", help="Detect and crop panels from a chapter folder")
-    p_panel.add_argument("input_dir", type=Path, help="Folder of ordered images (e.g. input/chapter_001)")
-    p_panel.add_argument("--output-root", type=Path, default=Path("output"))
+    p_panel.add_argument(
+        "input_dir",
+        type=Path,
+        help="Folder of ordered images (recommended: icm/_runs/<chapter_id>/inputs)",
+    )
+    p_panel.add_argument("--output-root", type=Path, default=ICM_RUNS_ROOT)
     p_panel.add_argument("--debug", action="store_true", help="Write debug images with detected panel boxes")
     p_panel.add_argument(
         "--detector",
@@ -95,12 +114,61 @@ def _build_parser() -> argparse.ArgumentParser:
     return p
 
 
-def _chapter_output_dir(input_dir: Path, output_root: Path) -> Path:
-    """Map an input folder name to an output folder under `output_root`."""
+def _run_dir_for_input(input_dir: Path, output_root: Path) -> Path:
+    """Map an input folder name to a run folder under `output_root`."""
     return output_root / input_dir.name
 
 
-def _write_outputs(out_dir: Path, chapter: ChapterSummary) -> tuple[Path, Path]:
+def _stage_dir(run_dir: Path, stage: str) -> Path:
+    return run_dir / stage
+
+
+def _cmd_init_run(args: argparse.Namespace) -> int:
+    chapter_id = args.chapter_id or args.source_input_dir.name
+    run_dir = args.output_root / chapter_id
+    dest_inputs_dir = run_dir / "inputs"
+
+    try:
+        copied, skipped = io_utils.copy_input_images_to_dir(
+            args.source_input_dir,
+            dest_inputs_dir,
+            overwrite=bool(args.overwrite),
+        )
+    except Exception as e:
+        print(f"init-run failed: {e}", file=sys.stderr)
+        return 2
+
+    print(str(dest_inputs_dir))
+    if skipped and not args.overwrite:
+        print(
+            f"Skipped {skipped} existing file(s); re-run with --overwrite to refresh.",
+            file=sys.stderr,
+        )
+    if copied:
+        print(f"Copied {copied} file(s) into {dest_inputs_dir}.", file=sys.stderr)
+    return 0
+
+
+def _resolve_run_dir(chapter_dir: Path) -> Path:
+    """
+    Resolve a user-provided `chapter_dir` to a run directory.
+
+    Accepts:
+    - run root: `.../icm/_runs/chapter_001`
+    - stage folder: `.../icm/_runs/chapter_001/04_beat_summary`
+    - legacy flat output folder: `.../output/chapter_001`
+    """
+    if (chapter_dir / STAGE_01).exists() or (chapter_dir / STAGE_04).exists():
+        return chapter_dir
+    if chapter_dir.name.startswith("0") and any(
+        (chapter_dir.parent / stage).exists()
+        for stage in (STAGE_01, STAGE_02, STAGE_03, STAGE_04, STAGE_05)
+    ):
+        return chapter_dir.parent
+    return chapter_dir
+
+
+def _write_outputs(out_dir: Path, chapter: object) -> tuple[Path, Path]:
     """Write `summary.json` and `summary.txt` and return their paths."""
     summary_json_path = out_dir / "summary.json"
     summary_txt_path = out_dir / "summary.txt"
@@ -118,7 +186,7 @@ def _write_outputs(out_dir: Path, chapter: ChapterSummary) -> tuple[Path, Path]:
     return summary_txt_path, summary_json_path
 
 
-def _write_transcript_outputs(out_dir: Path, transcript: Transcript) -> tuple[Path, Path]:
+def _write_transcript_outputs(out_dir: Path, transcript: object) -> tuple[Path, Path]:
     transcript_json_path = out_dir / "transcript.json"
     transcript_txt_path = out_dir / "transcript.txt"
 
@@ -142,8 +210,13 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
         print(str(e), file=sys.stderr)
         return 2
 
-    out_dir = _chapter_output_dir(args.input_dir, args.output_root)
-    panels_dir = out_dir / "panels"
+    run_dir = _run_dir_for_input(args.input_dir, args.output_root)
+    stage01_dir = _stage_dir(run_dir, STAGE_01)
+    stage02_dir = _stage_dir(run_dir, STAGE_02)
+    stage03_dir = _stage_dir(run_dir, STAGE_03)
+    stage04_dir = _stage_dir(run_dir, STAGE_04)
+
+    panels_dir = stage01_dir / "panels"
     manifest_path = panels_dir / "manifest.json"
 
     if not manifest_path.exists():
@@ -151,6 +224,14 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
         return 2
 
     try:
+        from .schemas import PanelManifest
+        from .summarize import (
+            summarize_beats_from_contextual_panel_interpretations,
+            summarize_chapter_from_beats,
+            summarize_contextual_panels,
+            summarize_panel,
+        )
+
         manifest_data = io_utils.read_json(manifest_path)
         manifests = [PanelManifest.model_validate(m) for m in manifest_data]
     except Exception as e:
@@ -159,6 +240,8 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
 
     ocr_map: dict[str, str] = {}
     if args.use_ocr:
+        from .ocr import run_ocr
+
         ocr_results = []
         for m in manifests:
             try:
@@ -174,7 +257,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
             except Exception as e:
                 print(f"OCR failed for {m.panel_id}: {e}", file=sys.stderr)
                 return 2
-        io_utils.write_json(out_dir / "panel_ocr.json", ocr_results)
+        io_utils.write_json(stage02_dir / "panel_ocr.json", ocr_results)
 
     panel_summaries: list[PanelSummary] = []
     failed_panels: list[str] = []
@@ -192,7 +275,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
             failed_panels.append(m.panel_id)
             print(f"Panel summarization failed for {m.panel_id}: {e}", file=sys.stderr)
 
-    io_utils.write_json(out_dir / "panel_summaries.json", io_utils.to_jsonable(panel_summaries))
+    io_utils.write_json(stage02_dir / "panel_summaries.json", io_utils.to_jsonable(panel_summaries))
 
     if not panel_summaries:
         print("No panel summaries succeeded; cannot proceed.", file=sys.stderr)
@@ -200,7 +283,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
             print("Failed panels: " + ", ".join(failed_panels), file=sys.stderr)
         return 3
 
-    cast_context = io_utils.load_optional_cast_context(args.input_dir, out_dir)
+    cast_context = io_utils.load_optional_cast_context(args.input_dir, stage02_dir)
     try:
         contextual_interpretations = summarize_contextual_panels(
             panel_summaries=panel_summaries,
@@ -213,7 +296,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
         return 3
 
     io_utils.write_json(
-        out_dir / "contextual_panel_interpretations.json",
+        stage03_dir / "contextual_panel_interpretations.json",
         io_utils.to_jsonable(contextual_interpretations),
     )
 
@@ -226,7 +309,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
         print(f"Beat grouping failed: {e}", file=sys.stderr)
         return 3
 
-    io_utils.write_json(out_dir / "beat_summary.json", io_utils.to_jsonable(beat_summary))
+    io_utils.write_json(stage04_dir / "beat_summary.json", io_utils.to_jsonable(beat_summary))
 
     try:
         chapter = summarize_chapter_from_beats(args.title, beat_summary=beat_summary, model=args.model)
@@ -234,7 +317,7 @@ def _cmd_panel_summarize(args: argparse.Namespace) -> int:
         print(f"Chapter synthesis failed: {e}", file=sys.stderr)
         return 3
 
-    summary_txt_path, summary_json_path = _write_outputs(out_dir, chapter)
+    summary_txt_path, summary_json_path = _write_outputs(stage04_dir, chapter)
 
     if failed_panels:
         print("Warning: some panels failed: " + ", ".join(failed_panels), file=sys.stderr)
@@ -256,10 +339,18 @@ def _cmd_transcript(args: argparse.Namespace) -> int:
         print(str(e), file=sys.stderr)
         return 2
 
-    beat_path = args.chapter_dir / "beat_summary.json"
-    contextual_path = args.chapter_dir / "contextual_panel_interpretations.json"
+    run_dir = _resolve_run_dir(args.chapter_dir)
+    beat_path = run_dir / STAGE_04 / "beat_summary.json"
+    contextual_path = run_dir / STAGE_03 / "contextual_panel_interpretations.json"
 
     try:
+        from .schemas import BeatSummary, ContextualPanelInterpretation
+        from .summarize import (
+            generate_transcript_from_beats,
+            repair_transcript_alignment,
+            validate_transcript_alignment,
+        )
+
         beat_summary = BeatSummary.model_validate(io_utils.read_json(beat_path))
         contextual = [
             ContextualPanelInterpretation.model_validate(x)
@@ -298,7 +389,8 @@ def _cmd_transcript(args: argparse.Namespace) -> int:
                 print(f"Transcript alignment repair failed: {e}", file=sys.stderr)
                 return 3
 
-    txt_path, json_path = _write_transcript_outputs(args.chapter_dir, transcript)
+    out_dir = run_dir / STAGE_05
+    txt_path, json_path = _write_transcript_outputs(out_dir, transcript)
 
     if args.output_format == "json":
         print(str(json_path))
@@ -315,6 +407,8 @@ def main(argv: list[str] | None = None) -> int:
     """CLI entry point; returns a process exit code."""
     parser = _build_parser()
     args = parser.parse_args(argv)
+    if args.cmd == "init-run":
+        return _cmd_init_run(args)
     if args.cmd == "panelize":
         return _cmd_panelize(args)
     if args.cmd == "panel-summarize":
@@ -334,9 +428,14 @@ def _cmd_panelize(args: argparse.Namespace) -> int:
         return 2
 
     try:
+        from . import panelize
+
+        run_dir = _run_dir_for_input(args.input_dir, args.output_root)
+        stage01_dir = _stage_dir(run_dir, STAGE_01)
         manifest_path = panelize.panelize_chapter(
             input_dir=args.input_dir,
             output_root=args.output_root,
+            chapter_dir=stage01_dir,
             detector=args.detector,
             gutter_mode=args.gutter_mode,
             white_threshold=args.white_threshold,

@@ -24,12 +24,25 @@ The project is a sequential, human-reviewed production pipeline:
 
 Each stage receives artifacts from the previous stage, applies a narrow transformation or review pass, then writes a stable output for the next stage.
 
+## Repository Layout (Reality vs. Canon)
+
+This repo supports two related (and compatible) concepts:
+
+- **Source inputs (archive):** `input/<chapter_id>/` is a convenient place to store the raw ordered page images you ingest.
+- **ICM run (canonical working set):** `icm/_runs/<chapter_id>/` is where stage artifacts live, and where the stage contracts expect inputs/outputs.
+
+Recommended convention going forward:
+
+1. Put raw pages in `input/<chapter_id>/` (optional but convenient).
+2. Materialize an ICM run at `icm/_runs/<chapter_id>/inputs/` using the `init-run` command (see “Run Initialization” below).
+3. Run the pipeline against `icm/_runs/<chapter_id>/inputs/` so the stage folders remain self-contained and inspectable.
+
 ## Context Loading Rule
 
 Load context in this order:
 
 1. Root `CLAUDE.md` for global project identity and behavioral rules.
-2. Root `CONTEXT.md` for routing.
+2. Root `CONTEXT.md` for routing (repo shim that points into `icm/`).
 3. The current stage's `CONTEXT.md` for the active contract.
 4. Only the reference files named by the current stage.
 5. Only the input artifacts named by the current stage.
@@ -206,3 +219,25 @@ The current known issue is transcript voice drift.
 Earlier panel-level prompting encouraged character-perspective narration. That is useful only if the stage explicitly asks for that voice. Transcript generation should instead use reviewed beat summaries as the primary source and produce neutral recap narration.
 
 Therefore, transcript generation should be downstream of beat summaries, not raw panel summaries alone.
+
+## Run Initialization
+
+To create (or refresh) the canonical run folder structure for a chapter:
+
+```text
+python -m src.app init-run input/chapter_001
+```
+
+This copies supported images into:
+
+```text
+icm/_runs/chapter_001/inputs/
+```
+
+Then use that canonical inputs folder for downstream commands:
+
+```text
+python -m src.app panelize icm/_runs/chapter_001/inputs
+python -m src.app panel-summarize icm/_runs/chapter_001/inputs --title "Chapter 001"
+python -m src.app transcript icm/_runs/chapter_001 --title "Chapter 001"
+```

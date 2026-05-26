@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ContextualPanelInterpretationList",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "panel_id",
+      "reading_order",
+      "resolved_characters",
+      "continuity_links",
+      "panel_role",
+      "setup_payoff_relation",
+      "joke_or_dramatic_mechanism",
+      "corrected_story_function",
+      "adaptation_notes",
+      "uncertainty_notes",
+      "concise_contextual_summary"
+    ],
+    "properties": {
+      "panel_id": { "type": "string" },
+      "reading_order": { "type": "integer" },
+      "resolved_characters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "visual_label", "confidence", "evidence"],
+          "properties": {
+            "name": { "type": ["string", "null"] },
+            "visual_label": { "type": "string" },
+            "confidence": { "type": "string" },
+            "evidence": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      },
+      "continuity_links": { "type": "array", "items": { "type": "string" } },
+      "panel_role": { "type": "string" },
+      "setup_payoff_relation": {
+        "type": ["object", "null"],
+        "required": ["setup_panel_ids", "payoff_panel_ids", "setup", "payoff", "mechanism", "effect"],
+        "properties": {
+          "setup_panel_ids": { "type": "array", "items": { "type": "string" } },
+          "payoff_panel_ids": { "type": "array", "items": { "type": "string" } },
+          "setup": { "type": ["string", "null"] },
+          "payoff": { "type": ["string", "null"] },
+          "mechanism": { "type": ["string", "null"] },
+          "effect": { "type": ["string", "null"] }
+        }
+      },
+      "joke_or_dramatic_mechanism": { "type": ["string", "null"] },
+      "corrected_story_function": { "type": "string" },
+      "adaptation_notes": { "type": "array", "items": { "type": "string" } },
+      "uncertainty_notes": { "type": "array", "items": { "type": "string" } },
+      "concise_contextual_summary": { "type": "string" }
+    }
+  }
+}
+

@@ -3,8 +3,6 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 
-from dotenv import load_dotenv
-
 DEFAULT_MODEL = "gpt-4.1"
 DEFAULT_BATCH_SIZE = 4
 DEFAULT_MAX_HEIGHT = 4000
@@ -37,7 +35,12 @@ class AppConfig:
         Raises:
             RuntimeError: If `OPENAI_API_KEY` is missing or empty.
         """
-        load_dotenv()
+        try:
+            from dotenv import load_dotenv  # type: ignore
+
+            load_dotenv()
+        except Exception:
+            pass
         api_key = os.getenv("OPENAI_API_KEY", "").strip()
         if not api_key:
             raise RuntimeError(

@@ -26,10 +26,8 @@
           "location": { "type": "string" },
           "description": { "type": "string" },
           "suggested_fix": { "type": "string" }
-        },
-        "additionalProperties": false
+        }
       }
     }
-  },
-  "additionalProperties": false
+  }
 }
