@@ -115,7 +115,16 @@ def _build_parser() -> argparse.ArgumentParser:
 
 
 def _run_dir_for_input(input_dir: Path, output_root: Path) -> Path:
-    """Map an input folder name to a run folder under `output_root`."""
+    """
+    Map an input folder to its run folder under `output_root`.
+
+    Supports:
+    - Canonical ICM layout: `icm/_runs/<chapter_id>/inputs` -> `icm/_runs/<chapter_id>`
+    - Legacy/simple layout: `<some_folder_name>` -> `icm/_runs/<some_folder_name>`
+    """
+    # Canonical ICM layout: output_root/<chapter_id>/inputs
+    if input_dir.name == "inputs" and input_dir.parent.parent == output_root:
+        return input_dir.parent
     return output_root / input_dir.name
 
 
@@ -158,6 +167,8 @@ def _resolve_run_dir(chapter_dir: Path) -> Path:
     - stage folder: `.../icm/_runs/chapter_001/04_beat_summary`
     - legacy flat output folder: `.../output/chapter_001`
     """
+    if chapter_dir.name == "inputs":
+        return chapter_dir.parent
     if (chapter_dir / STAGE_01).exists() or (chapter_dir / STAGE_04).exists():
         return chapter_dir
     if chapter_dir.name.startswith("0") and any(
