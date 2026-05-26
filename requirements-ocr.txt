@@ -1,0 +1,3 @@
+# Optional OCR support (Stage 02). Requires the external Tesseract binary installed on your system.
+pytesseract>=0.3.10
+
